@@ -52,6 +52,16 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   `CNAME`-Datei im Repo-Root, "Enforce HTTPS" aktivieren).
 - Domain-Kauf: über einen beliebigen Registrar (z. B. Namecheap, INWX, Cloudflare
   Registrar) – noch nicht final entschieden/gekauft.
+- **Tracking/Consent:** Google Tag Manager (`GTM-TL4WCD8P`) + darüber Google Analytics 4
+  eingebunden (Snippet auf allen vier Seiten). Personalisierte Werbung/Google Signals ist
+  aktiv, GA4-Datenaufbewahrung auf 14 Monate gestellt, AVV mit Google abgeschlossen.
+  Einwilligung läuft über **Klaro** (Kiprotect, gehostete Config unter
+  `api.kiprotect.com/.../klaro.js`) mit den Kategorien "Notwendig" und "Statistik".
+  **Achtung, noch offen:** Das GTM-Snippet im HTML ist aktuell ein normales `<script>`,
+  nicht über Klaros Script-Blocking (`type="text/plain" data-name="..."`) gesperrt, und es
+  fehlt ein vorgeschaltetes `gtag('consent','default',...)`. Bevor die Seite live geht, muss
+  Google Consent Mode v2 (Default denied + Update je Klaro-Kategorie) technisch fertig
+  verdrahtet werden – siehe Abschnitt 6 und 7.
 
 ## 4. Dateistruktur (im Ordner `performatic-website`)
 
@@ -108,10 +118,13 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   entschieden werden, ob diese greift (beeinflusst Umsatzsteuer-Ausweis im Impressum).
 - **Nebentätigkeit**: Meldepflicht beim Arbeitgeber prüfen, auch für zunächst unbezahlte
   Tätigkeit (aktuell nur kostenloses Audit).
-- **Cookie-Consent / Google Consent Mode v2**: Aktuell ist **kein** Analyse-Tool
-  eingebunden (bewusst, um in der Testphase kein Consent-Banner zu brauchen). Sobald GA4/
-  GTM ergänzt wird, ist ein Consent-Banner *vor* dem ersten Tag-Fire zwingend nötig – auch
-  bei reinem GA4-Einsatz ohne Ads. In `datenschutz.html` bereits als Hinweis hinterlegt.
+- **Cookie-Consent / Google Consent Mode v2**: GTM + GA4 (inkl. personalisierter Werbung/
+  Google Signals) sind eingebunden, Einwilligung soll über Klaro (Kategorien "Notwendig"/
+  "Statistik") laufen. Technisch ist das Consent-Mode-Wiring (Script-Blocking für GTM +
+  `default denied`-Signal) im Code noch **nicht** umgesetzt – die Seite ist noch nicht live,
+  das muss vor Go-Live nachgeholt werden, sonst feuert GTM ungefiltert. In `datenschutz.html`
+  ist der Zielzustand (mit Klaro-Gating) bereits beschrieben, spiegelt aber noch nicht den
+  aktuellen Code-Stand wider.
 - Die Design-Vorlage enthielt einen "Ergebnisse"-Abschnitt mit Platzhalter-Kennzahlen
   (z. B. "+38 % ROAS", explizit als Platzhalter markiert). Dieser wurde **bewusst nicht
   übernommen**, um keine erfundenen Erfolgszahlen zu zeigen (Irreführungs-/UWG-Risiko).
@@ -121,8 +134,12 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 
 - [ ] Formspree-Formular (`xppzlnbe`) mit einer echten Einsendung testen und Zustellung
       an die im Formspree-Dashboard hinterlegte Empfänger-Adresse prüfen
-- [ ] Echte Kontaktdaten in `impressum.html` und `datenschutz.html` eintragen (Name,
-      Adresse – siehe Abschnitt 6, ggf. c/o-Adresse –, Telefon, E-Mail)
+- [ ] Echte Kontaktdaten in `impressum.html` eintragen (Adresse – siehe Abschnitt 6,
+      ggf. c/o-Adresse –, Telefon). In `datenschutz.html` sind Name (Jonas Koslik) und
+      E-Mail (`kontakt@performatic-intelligence.de`) bereits eingetragen, Adresse fehlt noch.
+- [ ] Google Consent Mode v2 technisch fertigstellen: GTM-Snippet über Klaros
+      Script-Blocking sperren + `gtag('consent','default',...)` vor dem GTM-Tag setzen,
+      Klaro-Kategorien "Notwendig"/"Statistik" an GTM-Trigger koppeln (siehe Abschnitt 3/6)
 - [ ] Domain kaufen + GitHub-Repo anlegen + GitHub Pages einrichten (DNS-Records siehe
       Abschnitt 3)
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
