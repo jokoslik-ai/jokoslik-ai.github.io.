@@ -61,11 +61,16 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   personalisierte Werbung → steuert `ad_storage`, `ad_user_data`, `ad_personalization`).
   Die Kategorie "Werbung" ist in der Klaro-Config bei Kiprotect noch anzulegen (liegt
   außerhalb dieses Repos).
-  **Achtung, noch offen:** Das GTM-Snippet im HTML ist aktuell ein normales `<script>`,
-  nicht über Klaros Script-Blocking (`type="text/plain" data-name="..."`) gesperrt, und es
-  fehlt ein vorgeschaltetes `gtag('consent','default',...)`. Bevor die Seite live geht, muss
-  Google Consent Mode v2 (Default denied + Update je Klaro-Kategorie) technisch fertig
-  verdrahtet werden – siehe Abschnitt 6 und 7.
+  Ein `gtag('consent','default', {...alle Typen: 'denied'})` steht als eigenständiges,
+  synchrones Inline-Script vor dem Klaro-Script in allen vier HTML-Dateien – wichtig, weil
+  Klaro selbst per `defer` geladen wird und sein "denied" sonst zu spät käme (per
+  GTM-Debugger bestätigt: vorher feuerte ein `gtag`-Call ganz ohne Consent-State). Klaro
+  ruft danach bei Zustimmung `gtag('consent','update', ...)` auf – laut Test funktioniert
+  das Update korrekt.
+  **Noch offen (liegt außerhalb des Repos):** Klaro-Kategorie "Werbung" in der
+  Kiprotect-Config anlegen, und die GTM-Tags (GA4 etc.) müssen im Container selbst
+  "Consent Settings" (Built-in Consent Checks) aktiviert haben, sonst ignorieren sie den
+  Consent-Status.
 
 ## 4. Dateistruktur (im Ordner `performatic-website`)
 
@@ -123,14 +128,14 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - **Nebentätigkeit**: Meldepflicht beim Arbeitgeber prüfen, auch für zunächst unbezahlte
   Tätigkeit (aktuell nur kostenloses Audit).
 - **Cookie-Consent / Google Consent Mode v2**: GTM + GA4 (inkl. personalisierter Werbung/
-  Google Signals) sind eingebunden, Einwilligung soll über Klaro mit drei getrennten
-  Kategorien laufen ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und
-  Werbung sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Technisch ist
-  das Consent-Mode-Wiring (Script-Blocking für GTM + `default denied`-Signal je Consent-Typ)
-  im Code noch **nicht** umgesetzt – die Seite ist noch nicht live, das muss vor Go-Live
-  nachgeholt werden, sonst feuert GTM ungefiltert. In `datenschutz.html` ist der Zielzustand
-  (mit Klaro-Gating, drei Kategorien) bereits beschrieben, spiegelt aber noch nicht den
-  aktuellen Code-Stand wider.
+  Google Signals) sind eingebunden, Einwilligung läuft über Klaro mit drei getrennten
+  Kategorien ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und Werbung
+  sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Das `default denied`-
+  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen vier HTML-Dateien),
+  `gtag('consent','update',...)` durch Klaro wurde per GTM-Debugger als funktionierend
+  bestätigt. Offen bleibt nur noch, in der Kiprotect-Klaro-Config die Kategorie "Werbung"
+  anzulegen und in GTM selbst die Consent Settings pro Tag zu aktivieren (beides außerhalb
+  dieses Repos). In `datenschutz.html` ist dieser Zielzustand bereits beschrieben.
 - Die Design-Vorlage enthielt einen "Ergebnisse"-Abschnitt mit Platzhalter-Kennzahlen
   (z. B. "+38 % ROAS", explizit als Platzhalter markiert). Dieser wurde **bewusst nicht
   übernommen**, um keine erfundenen Erfolgszahlen zu zeigen (Irreführungs-/UWG-Risiko).
@@ -145,11 +150,10 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       E-Mail (`kontakt@performatic-intelligence.de`) bereits eingetragen, Adresse fehlt noch.
 - [ ] Klaro-Kategorie "Werbung" in der Kiprotect-Config anlegen (aktuell nur "Notwendig"/
       "Statistik" vorhanden)
-- [ ] Google Consent Mode v2 technisch fertigstellen: GTM-Snippet über Klaros
-      Script-Blocking sperren + `gtag('consent','default',...)` vor dem GTM-Tag setzen,
-      Klaro-Kategorien "Statistik" → `analytics_storage` und "Werbung" →
-      `ad_storage`/`ad_user_data`/`ad_personalization` an GTM-Trigger koppeln
-      (siehe Abschnitt 3/6)
+- [ ] In GTM je Tag (GA4 etc.) die "Consent Settings" (Built-in Consent Checks) auf
+      `analytics_storage` bzw. `ad_storage`/`ad_user_data`/`ad_personalization` aktivieren –
+      das `default denied`-Signal im Code allein reicht nicht, wenn die Tags selbst den
+      Consent-Status nicht prüfen
 - [ ] Domain kaufen + GitHub-Repo anlegen + GitHub Pages einrichten (DNS-Records siehe
       Abschnitt 3)
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
