@@ -56,7 +56,11 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   eingebunden (Snippet auf allen vier Seiten). Personalisierte Werbung/Google Signals ist
   aktiv, GA4-Datenaufbewahrung auf 14 Monate gestellt, AVV mit Google abgeschlossen.
   Einwilligung läuft über **Klaro** (Kiprotect, gehostete Config unter
-  `api.kiprotect.com/.../klaro.js`) mit den Kategorien "Notwendig" und "Statistik".
+  `api.kiprotect.com/.../klaro.js`) mit drei Kategorien: "Notwendig", "Statistik" (GTM/GA4
+  reine Reichweitenmessung → steuert `analytics_storage`) und "Werbung" (Google Signals/
+  personalisierte Werbung → steuert `ad_storage`, `ad_user_data`, `ad_personalization`).
+  Die Kategorie "Werbung" ist in der Klaro-Config bei Kiprotect noch anzulegen (liegt
+  außerhalb dieses Repos).
   **Achtung, noch offen:** Das GTM-Snippet im HTML ist aktuell ein normales `<script>`,
   nicht über Klaros Script-Blocking (`type="text/plain" data-name="..."`) gesperrt, und es
   fehlt ein vorgeschaltetes `gtag('consent','default',...)`. Bevor die Seite live geht, muss
@@ -119,11 +123,13 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - **Nebentätigkeit**: Meldepflicht beim Arbeitgeber prüfen, auch für zunächst unbezahlte
   Tätigkeit (aktuell nur kostenloses Audit).
 - **Cookie-Consent / Google Consent Mode v2**: GTM + GA4 (inkl. personalisierter Werbung/
-  Google Signals) sind eingebunden, Einwilligung soll über Klaro (Kategorien "Notwendig"/
-  "Statistik") laufen. Technisch ist das Consent-Mode-Wiring (Script-Blocking für GTM +
-  `default denied`-Signal) im Code noch **nicht** umgesetzt – die Seite ist noch nicht live,
-  das muss vor Go-Live nachgeholt werden, sonst feuert GTM ungefiltert. In `datenschutz.html`
-  ist der Zielzustand (mit Klaro-Gating) bereits beschrieben, spiegelt aber noch nicht den
+  Google Signals) sind eingebunden, Einwilligung soll über Klaro mit drei getrennten
+  Kategorien laufen ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und
+  Werbung sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Technisch ist
+  das Consent-Mode-Wiring (Script-Blocking für GTM + `default denied`-Signal je Consent-Typ)
+  im Code noch **nicht** umgesetzt – die Seite ist noch nicht live, das muss vor Go-Live
+  nachgeholt werden, sonst feuert GTM ungefiltert. In `datenschutz.html` ist der Zielzustand
+  (mit Klaro-Gating, drei Kategorien) bereits beschrieben, spiegelt aber noch nicht den
   aktuellen Code-Stand wider.
 - Die Design-Vorlage enthielt einen "Ergebnisse"-Abschnitt mit Platzhalter-Kennzahlen
   (z. B. "+38 % ROAS", explizit als Platzhalter markiert). Dieser wurde **bewusst nicht
@@ -137,9 +143,13 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - [ ] Echte Kontaktdaten in `impressum.html` eintragen (Adresse – siehe Abschnitt 6,
       ggf. c/o-Adresse –, Telefon). In `datenschutz.html` sind Name (Jonas Koslik) und
       E-Mail (`kontakt@performatic-intelligence.de`) bereits eingetragen, Adresse fehlt noch.
+- [ ] Klaro-Kategorie "Werbung" in der Kiprotect-Config anlegen (aktuell nur "Notwendig"/
+      "Statistik" vorhanden)
 - [ ] Google Consent Mode v2 technisch fertigstellen: GTM-Snippet über Klaros
       Script-Blocking sperren + `gtag('consent','default',...)` vor dem GTM-Tag setzen,
-      Klaro-Kategorien "Notwendig"/"Statistik" an GTM-Trigger koppeln (siehe Abschnitt 3/6)
+      Klaro-Kategorien "Statistik" → `analytics_storage` und "Werbung" →
+      `ad_storage`/`ad_user_data`/`ad_personalization` an GTM-Trigger koppeln
+      (siehe Abschnitt 3/6)
 - [ ] Domain kaufen + GitHub-Repo anlegen + GitHub Pages einrichten (DNS-Records siehe
       Abschnitt 3)
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
