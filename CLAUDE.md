@@ -52,6 +52,25 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   `CNAME`-Datei im Repo-Root, "Enforce HTTPS" aktivieren).
 - Domain-Kauf: über einen beliebigen Registrar (z. B. Namecheap, INWX, Cloudflare
   Registrar) – noch nicht final entschieden/gekauft.
+- **Tracking/Consent:** Google Tag Manager (`GTM-TL4WCD8P`) + darüber Google Analytics 4
+  eingebunden (Snippet auf allen vier Seiten). Personalisierte Werbung/Google Signals ist
+  aktiv, GA4-Datenaufbewahrung auf 14 Monate gestellt, AVV mit Google abgeschlossen.
+  Einwilligung läuft über **Klaro** (Kiprotect, gehostete Config unter
+  `api.kiprotect.com/.../klaro.js`) mit drei Kategorien: "Notwendig", "Statistik" (GTM/GA4
+  reine Reichweitenmessung → steuert `analytics_storage`) und "Werbung" (Google Signals/
+  personalisierte Werbung → steuert `ad_storage`, `ad_user_data`, `ad_personalization`).
+  Die Kategorie "Werbung" ist in der Klaro-Config bei Kiprotect noch anzulegen (liegt
+  außerhalb dieses Repos).
+  Ein `gtag('consent','default', {...alle Typen: 'denied'})` steht als eigenständiges,
+  synchrones Inline-Script vor dem Klaro-Script in allen vier HTML-Dateien – wichtig, weil
+  Klaro selbst per `defer` geladen wird und sein "denied" sonst zu spät käme (per
+  GTM-Debugger bestätigt: vorher feuerte ein `gtag`-Call ganz ohne Consent-State). Klaro
+  ruft danach bei Zustimmung `gtag('consent','update', ...)` auf – laut Test funktioniert
+  das Update korrekt.
+  **Noch offen (liegt außerhalb des Repos):** Klaro-Kategorie "Werbung" in der
+  Kiprotect-Config anlegen, und die GTM-Tags (GA4 etc.) müssen im Container selbst
+  "Consent Settings" (Built-in Consent Checks) aktiviert haben, sonst ignorieren sie den
+  Consent-Status.
 
 ## 4. Dateistruktur (im Ordner `performatic-website`)
 
@@ -108,10 +127,15 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   entschieden werden, ob diese greift (beeinflusst Umsatzsteuer-Ausweis im Impressum).
 - **Nebentätigkeit**: Meldepflicht beim Arbeitgeber prüfen, auch für zunächst unbezahlte
   Tätigkeit (aktuell nur kostenloses Audit).
-- **Cookie-Consent / Google Consent Mode v2**: Aktuell ist **kein** Analyse-Tool
-  eingebunden (bewusst, um in der Testphase kein Consent-Banner zu brauchen). Sobald GA4/
-  GTM ergänzt wird, ist ein Consent-Banner *vor* dem ersten Tag-Fire zwingend nötig – auch
-  bei reinem GA4-Einsatz ohne Ads. In `datenschutz.html` bereits als Hinweis hinterlegt.
+- **Cookie-Consent / Google Consent Mode v2**: GTM + GA4 (inkl. personalisierter Werbung/
+  Google Signals) sind eingebunden, Einwilligung läuft über Klaro mit drei getrennten
+  Kategorien ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und Werbung
+  sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Das `default denied`-
+  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen vier HTML-Dateien),
+  `gtag('consent','update',...)` durch Klaro wurde per GTM-Debugger als funktionierend
+  bestätigt. Offen bleibt nur noch, in der Kiprotect-Klaro-Config die Kategorie "Werbung"
+  anzulegen und in GTM selbst die Consent Settings pro Tag zu aktivieren (beides außerhalb
+  dieses Repos). In `datenschutz.html` ist dieser Zielzustand bereits beschrieben.
 - Die Design-Vorlage enthielt einen "Ergebnisse"-Abschnitt mit Platzhalter-Kennzahlen
   (z. B. "+38 % ROAS", explizit als Platzhalter markiert). Dieser wurde **bewusst nicht
   übernommen**, um keine erfundenen Erfolgszahlen zu zeigen (Irreführungs-/UWG-Risiko).
@@ -121,8 +145,15 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 
 - [ ] Formspree-Formular (`xppzlnbe`) mit einer echten Einsendung testen und Zustellung
       an die im Formspree-Dashboard hinterlegte Empfänger-Adresse prüfen
-- [ ] Echte Kontaktdaten in `impressum.html` und `datenschutz.html` eintragen (Name,
-      Adresse – siehe Abschnitt 6, ggf. c/o-Adresse –, Telefon, E-Mail)
+- [ ] Echte Kontaktdaten in `impressum.html` eintragen (Adresse – siehe Abschnitt 6,
+      ggf. c/o-Adresse –, Telefon). In `datenschutz.html` sind Name (Jonas Koslik) und
+      E-Mail (`kontakt@performatic-intelligence.de`) bereits eingetragen, Adresse fehlt noch.
+- [ ] Klaro-Kategorie "Werbung" in der Kiprotect-Config anlegen (aktuell nur "Notwendig"/
+      "Statistik" vorhanden)
+- [ ] In GTM je Tag (GA4 etc.) die "Consent Settings" (Built-in Consent Checks) auf
+      `analytics_storage` bzw. `ad_storage`/`ad_user_data`/`ad_personalization` aktivieren –
+      das `default denied`-Signal im Code allein reicht nicht, wenn die Tags selbst den
+      Consent-Status nicht prüfen
 - [ ] Domain kaufen + GitHub-Repo anlegen + GitHub Pages einrichten (DNS-Records siehe
       Abschnitt 3)
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
