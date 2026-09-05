@@ -24,22 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      var payload = {};
-      new FormData(form).forEach(function (value, key) {
-        payload[key] = value;
-      });
+      var data = new FormData(form);
 
       fetch(form.action, {
         method: 'POST',
-        body: JSON.stringify(payload),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+        body: data,
+        headers: { 'Accept': 'application/json' }
       })
-        .then(function (response) { return response.json().then(function (json) { return { ok: response.ok, json: json }; }); })
-        .then(function (result) {
-          if (result.ok && result.json && result.json.success !== 'false' && result.json.success !== false) {
+        .then(function (response) {
+          if (response.ok) {
             showStatus('Danke! Ich melde mich innerhalb von 2 Werktagen bei dir.', 'ok');
             form.reset();
           } else {
