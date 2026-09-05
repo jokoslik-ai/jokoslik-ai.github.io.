@@ -43,11 +43,12 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 ## 3. Tech-Stack
 
 - **Reines statisches HTML/CSS/JS**, kein Build-Step, kein Framework, kein Backend.
-- Formular-Versand über **Formspree** (`https://formspree.io/f/DEINE-FORMSPREE-ID` –
-  Platzhalter, muss durch echte Formspree-Endpoint-ID ersetzt werden). JS in `script.js`
-  nutzt `fetch()` gegen Formspree, mit Fallback auf natives Formular-Submit, solange die
-  Platzhalter-ID noch im `action`-Attribut steht (Erkennung über String-Suche
-  `DEINE-FORMSPREE-ID`).
+- Formular-Versand über **FormSubmit.co** (AJAX-Endpoint
+  `https://formsubmit.co/ajax/kontakt@performatic-intelligence.de`, fest in `index.html`
+  und `leistungen.html` eingetragen). JS in `script.js` nutzt `fetch()` gegen diesen
+  Endpoint und zeigt das JSON-Ergebnis als Inline-Statusmeldung an. Beim allerersten
+  Submit verschickt FormSubmit.co eine Aktivierungs-E-Mail an die Zieladresse – erst nach
+  Bestätigung werden weitere Einsendungen zugestellt.
 - Geplantes Hosting: **GitHub Pages** mit Custom Domain (A-Records auf
   `185.199.108.153/.109.153/.110.153/.111.153`, AAAA auf `2606:50c0:8000::153` usw.,
   `CNAME`-Datei im Repo-Root, "Enforce HTTPS" aktivieren).
@@ -64,9 +65,9 @@ leistungen.html    NEU: ausführliche Leistungsseite (Google Ads, Meta Ads,
                    ausführlich mit 3-Schritte-Ablauf; Preise im Detail; eigenes
                    Kontaktformular)
 styles.css         Gesamtes Styling, Design-Tokens, alle Komponenten
-script.js          Mobile-Nav-Toggle, Formspree-Submit-Handling
+script.js          Mobile-Nav-Toggle, FormSubmit.co-Submit-Handling
 impressum.html     Impressum (Platzhalter für Name/Adresse/Telefon/E-Mail)
-datenschutz.html   Datenschutzerklärung (DSGVO, Formspree-Hinweis, Tracking-Hinweis)
+datenschutz.html   Datenschutzerklärung (DSGVO, FormSubmit.co-Hinweis, Tracking-Hinweis)
 fonts/             Selbst gehostete Schriftdateien (kein Google-Fonts-CDN)
   barlow-400-latin.woff2
   barlow-condensed-600-latin.woff2
@@ -103,8 +104,9 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   Büro. Vor Kauf eines "virtuelle Geschäftsadresse"-Dienstes: Eignung für ladungsfähige
   Anschrift mit Anwalt/IHK/eRecht24 gegenprüfen (Rechtsprechung dazu ist uneinheitlich).
 - **Datenschutzerklärung** nötig wegen Formular-Datenverarbeitung (Kontaktformular) und
-  wegen Formspree als Auftragsverarbeiter mit Sitz in den USA (Datenübermittlung
-  Drittland – Hinweis in `datenschutz.html` enthalten, AVV mit Formspree noch abzuschließen).
+  wegen FormSubmit.co als Auftragsverarbeiter (Datenübermittlung an Drittanbieter –
+  Hinweis in `datenschutz.html` muss noch auf FormSubmit.co aktualisiert werden, AVV/
+  Datenschutzbedingungen von FormSubmit.co prüfen).
 - **Kleinunternehmerregelung (§ 19 UStG)**: sobald ein Gewerbe angemeldet wird, muss
   entschieden werden, ob diese greift (beeinflusst Umsatzsteuer-Ausweis im Impressum).
 - **Nebentätigkeit**: Meldepflicht beim Arbeitgeber prüfen, auch für zunächst unbezahlte
@@ -120,8 +122,9 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 
 ## 7. Offene / nächste Schritte
 
-- [ ] Formspree-Account anlegen, echte Endpoint-ID in `index.html` und `leistungen.html`
-      (`action="https://formspree.io/f/..."`) eintragen
+- [ ] FormSubmit.co-Aktivierungsmail an kontakt@performatic-intelligence.de bestätigen
+      (wird bei der ersten Formular-Einsendung automatisch verschickt)
+- [ ] `datenschutz.html` von Formspree- auf FormSubmit.co-Hinweis aktualisieren
 - [ ] Echte Kontaktdaten in `impressum.html` und `datenschutz.html` eintragen (Name,
       Adresse – siehe Abschnitt 6, ggf. c/o-Adresse –, Telefon, E-Mail)
 - [ ] Domain kaufen + GitHub-Repo anlegen + GitHub Pages einrichten (DNS-Records siehe

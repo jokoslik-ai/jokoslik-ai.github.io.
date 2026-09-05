@@ -23,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (form) {
     form.addEventListener('submit', function (event) {
-      if (form.action.indexOf('DEINE-FORMSPREE-ID') !== -1) {
-        return;
-      }
       event.preventDefault();
       var data = new FormData(form);
 
