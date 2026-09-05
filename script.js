@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
           'Accept': 'application/json'
         }
       })
-        .then(function (response) {
-          if (response.ok) {
+        .then(function (response) { return response.json().then(function (json) { return { ok: response.ok, json: json }; }); })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.success !== 'false' && result.json.success !== false) {
             showStatus('Danke! Ich melde mich innerhalb von 2 Werktagen bei dir.', 'ok');
             form.reset();
           } else {
