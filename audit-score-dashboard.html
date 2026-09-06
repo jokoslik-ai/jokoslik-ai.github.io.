@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Account-Audit Score Dashboard</title>
+<style>
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/barlow-400-latin.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/barlow-condensed-600-latin.woff2") format('woff2');
+}
+
+:root {
+  --color-bg: #f2f2f3;
+  --color-surface: #ffffff;
+  --color-text: #1d1f20;
+  --color-muted: #5d5d60;
+  --color-divider: #dcdcde;
+  --track: #d7d7da;
+  --font-heading: "Barlow Condensed", system-ui, sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+  --radius: 6px;
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; margin: 0; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px 96px; }
+
+header.page-head { margin-bottom: 28px; }
+header.page-head h1 { font-size: 28px; }
+header.page-head p { color: var(--color-muted); max-width: 68ch; margin: 8px 0 0; font-size: 14px; }
+
+.layout { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* — Score panel — */
+.score-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: sticky;
+  top: 24px;
+}
+.ring-box { position: relative; width: 100%; max-width: 260px; margin: 0 auto; aspect-ratio: 1 / 1; }
+.ring-box svg { width: 100%; height: 100%; display: block; }
+.ring-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; pointer-events: none;
+}
+.ring-center .score-total { font-family: var(--font-heading); font-size: 46px; line-height: 1; }
+.ring-center .score-of { font-size: 13px; color: var(--color-muted); margin-top: 2px; }
+.ring-center .score-level { font-size: 12px; color: var(--color-muted); margin-top: 8px; max-width: 16ch; }
+
+.legend { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.legend li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+.legend .dot { width: 11px; height: 11px; border-radius: 3px; flex: 0 0 auto; }
+.legend .name { flex: 1; }
+.legend .val { font-family: var(--font-heading); color: var(--color-muted); }
+
+.reset-btn {
+  margin-top: 22px; width: 100%;
+  font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.04em;
+  background: transparent; border: 1px solid var(--color-divider); border-radius: var(--radius);
+  padding: 10px; cursor: pointer; color: var(--color-text);
+}
+.reset-btn:hover { background: var(--color-bg); }
+
+/* — Module list — */
+.module {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+.module-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.module-head .dot { width: 12px; height: 12px; border-radius: 3px; flex: 0 0 auto; }
+.module-head h2 { font-size: 18px; flex: 1; }
+.module-head .module-score { font-family: var(--font-heading); font-size: 14px; color: var(--color-muted); }
+
+.subpoint { padding: 12px 0; border-top: 1px solid var(--color-divider); }
+.subpoint:first-of-type { border-top: none; padding-top: 0; }
+.subpoint-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.subpoint-head h3 { font-size: 14px; font-family: var(--font-body); font-weight: 600; flex: 1; }
+.subpoint-head .subpoint-score { font-size: 12.5px; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+.checks { display: flex; flex-direction: column; gap: 6px; }
+label.check { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; cursor: pointer; }
+label.check input { margin-top: 3px; flex: 0 0 auto; }
+label.check .check-text { flex: 1; color: var(--color-text); }
+label.check .check-w { flex: 0 0 auto; font-size: 11.5px; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <h1>Account-Audit – Score Dashboard</h1>
+    <p>Interne Auswertungshilfe für das kostenlose Account-Audit. Anhaken, was im jeweiligen Google-/Meta-Konto zutrifft – der Score (0–100) berechnet sich automatisch, pro Modul aufgeschlüsselt. Rein clientseitig, keine Daten verlassen diesen Browser.</p>
+  </header>
+
+  <div class="layout">
+    <aside class="score-panel">
+      <div class="ring-box">
+        <svg viewBox="0 0 200 200">
+          <g id="ringGroup" transform="rotate(-90 100 100)"></g>
+        </svg>
+        <div class="ring-center">
+          <div class="score-total" id="scoreTotal">0</div>
+          <div class="score-of">von 100</div>
+          <div class="score-level" id="scoreLevel">Ausbaufähig</div>
+        </div>
+      </div>
+      <ul class="legend" id="legend"></ul>
+      <button type="button" class="reset-btn" id="resetBtn">Alle Haken zurücksetzen</button>
+    </aside>
+
+    <main id="modules"></main>
+  </div>
+</div>
+
+<script>
+const MODULES = [
+  {
+    id: 'tracking', name: 'Tracking-Setup & Datenqualität', color: '#5980a6',
+    subpoints: [
+      { title: 'GA4-Grundimplementierung', items: [
+        { label: 'GA4 ist auf allen Seiten korrekt eingebunden (kein doppeltes Tracking, keine fehlenden Seiten)', weight: 2 },
+        { label: 'Wichtige Events (Seitenaufruf, Scroll, Klicks) werden sauber erfasst', weight: 3 },
+      ]},
+      { title: 'Conversion-Tracking auf Werbeplattformen', items: [
+        { label: 'Conversion-Tracking bei mind. einer Plattform (Google Ads oder Meta) eingerichtet', weight: 2 },
+        { label: 'Serverseitiges Tracking (Conversions API / Enhanced Conversions) ergänzt das clientseitige Tracking', weight: 3 },
+      ]},
+      { title: 'E-Commerce-Event-Tiefe', items: [
+        { label: 'Kauf-Events mit Transaktionswert werden erfasst', weight: 2 },
+        { label: 'Zusätzliche Funnel-Events (Produktansicht, In den Warenkorb, Checkout-Start) sind eingerichtet', weight: 2 },
+        { label: 'Events enthalten Produktdaten (Artikel-ID, Kategorie, Preis) für eine Analyse auf Produktebene', weight: 1 },
+      ]},
+      { title: 'Consent-Mode-Implementierung', items: [
+        { label: 'Ein Cookie-Consent-Tool ist im Einsatz und steuert die Tracking-Skripte', weight: 2 },
+        { label: 'Google Consent Mode (v2) ist implementiert, inkl. „denied“-Default vor dem Laden der Tags', weight: 3 },
+      ]},
+      { title: 'Attributions- & Datenkonsistenz', items: [
+        { label: 'UTM-Parameter werden konsistent und einheitlich für alle Kampagnen genutzt', weight: 2 },
+        { label: 'Conversion-Zahlen zwischen Werbeplattform und GA4 wurden abgeglichen (Abweichung < 10–20 %)', weight: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'kanal', name: 'Kontostruktur & Kanalwahl', color: '#7f9d84',
+    subpoints: [
+      { title: 'Kanal-Mix', items: [
+        { label: 'Die genutzten Kanäle (Google/Meta/weitere) passen nachvollziehbar zu Zielgruppe und Produkt', weight: 3 },
+        { label: 'Es gibt eine bewusste Entscheidung gegen ungeeignete Kanäle (nicht „wir sind überall“)', weight: 2 },
+      ]},
+      { title: 'Kampagnenstruktur', items: [
+        { label: 'Kampagnen sind nach Produktgruppen oder Zielen sinnvoll strukturiert', weight: 2 },
+        { label: 'Die Struktur ist übersichtlich (keine übermäßige Fragmentierung in zu viele Kampagnen/Anzeigengruppen)', weight: 3 },
+      ]},
+      { title: 'Budgetverteilung', items: [
+        { label: 'Budget wird regelmäßig anhand von Performance-Daten angepasst', weight: 2 },
+        { label: 'Es gibt eine erkennbare Priorisierung (Top-Performer erhalten mehr Budget als Low-Performer)', weight: 3 },
+      ]},
+      { title: 'Gebotsstrategie', items: [
+        { label: 'Die gewählte Gebotsstrategie passt zum vorhandenen Conversion-Volumen', weight: 3 },
+        { label: 'Automatisierte Gebotsstrategien laufen stabil (keine ständigen manuellen Eingriffe/Resets)', weight: 2 },
+      ]},
+      { title: 'Redundanzen & Kannibalisierung', items: [
+        { label: 'Es gibt keine offensichtlich konkurrierenden Kampagnen (z. B. Brand- vs. Nicht-Brand-Keywords ungetrennt)', weight: 3 },
+        { label: 'Zielgruppen/Placements überschneiden sich nicht unkontrolliert zwischen Kampagnen', weight: 2 },
+      ]},
+    ],
+  },
+  {
+    id: 'zielgruppe', name: 'Zielgruppen-Match', color: '#c2a878',
+    subpoints: [
+      { title: 'Zielgruppendefinition', items: [
+        { label: 'Es gibt eine klar formulierte Zielgruppe/Persona (nicht nur demografische Grunddaten)', weight: 3 },
+        { label: 'Die Zielgruppendefinition wird regelmäßig anhand echter Kundendaten überprüft', weight: 2 },
+      ]},
+      { title: 'Creative-Zielgruppen-Fit', items: [
+        { label: 'Bildsprache und Tonalität der Creatives passen erkennbar zur Zielgruppe', weight: 2 },
+        { label: 'Es existieren unterschiedliche Creative-Varianten für unterschiedliche Zielgruppensegmente', weight: 3 },
+      ]},
+      { title: 'Message Match', items: [
+        { label: 'Das Versprechen der Anzeige (Angebot, USP) taucht 1:1 auf der Landingpage wieder auf', weight: 3 },
+        { label: 'Es gibt keine Bruchstellen zwischen Anzeige und Landingpage (Sprache, Optik, Preis)', weight: 2 },
+      ]},
+      { title: 'Funnel-Differenzierung', items: [
+        { label: 'Neukunden (Cold Audience) werden anders angesprochen als Bestandskunden', weight: 2 },
+        { label: 'Es gibt eine dedizierte Retargeting-Strategie mit eigenen Creatives/Botschaften', weight: 3 },
+      ]},
+      { title: 'Wettbewerbsdifferenzierung', items: [
+        { label: 'Es ist ein klares Alleinstellungsmerkmal in den Anzeigen sichtbar', weight: 3 },
+        { label: 'Die eigenen Angebote/Anzeigen wurden bewusst mit Wettbewerbern verglichen', weight: 2 },
+      ]},
+    ],
+  },
+  {
+    id: 'steuerung', name: 'Steuerung & Skalierbarkeit', color: '#9b8aa3',
+    subpoints: [
+      { title: 'Ziel-KPIs', items: [
+        { label: 'Es gibt eine konkrete Zielgröße (z. B. Ziel-ROAS oder Ziel-CPA), nicht nur „mehr Umsatz“', weight: 3 },
+        { label: 'Die Zielgröße wurde aus der eigenen Kalkulation (Marge, Warenkorbwert) hergeleitet', weight: 2 },
+      ]},
+      { title: 'Reporting-Rhythmus', items: [
+        { label: 'Es gibt ein festes Reporting (wöchentlich/monatlich), nicht nur bei Problemen', weight: 2 },
+        { label: 'Das Reporting wird tatsächlich für Entscheidungen genutzt (nicht nur archiviert)', weight: 3 },
+      ]},
+      { title: 'Testing-Kultur', items: [
+        { label: 'Es werden regelmäßig A/B-Tests durchgeführt (Creatives, Landingpages, Gebote)', weight: 3 },
+        { label: 'Testergebnisse werden dokumentiert und fließen in künftige Kampagnen ein', weight: 2 },
+      ]},
+      { title: 'Skalierungspfad', items: [
+        { label: 'Budget-Erhöhungen erfolgen geplant/schrittweise (nicht sprunghaft)', weight: 3 },
+        { label: 'Es gibt einen definierten nächsten Schritt, wenn eine Kampagne die Ziel-KPI erreicht', weight: 2 },
+      ]},
+      { title: 'Wettbewerbs- & Marktbeobachtung', items: [
+        { label: 'CPCs/CPMs werden im Vergleich zur Branche eingeordnet', weight: 2 },
+        { label: 'Wettbewerber-Aktivitäten (Angebote, neue Kanäle) werden beobachtet', weight: 3 },
+      ]},
+    ],
+  },
+];
+
+const MODULE_MAX = 25;
+const TOTAL_MAX = MODULE_MAX * MODULES.length;
+
+// — Ring geometry —
+const R = 80, CX = 100, CY = 100, STROKE = 26;
+const CIRC = 2 * Math.PI * R;
+const SEG_LEN_FULL = CIRC / MODULES.length;
+const GAP = CIRC * 0.014;
+const SEG_LEN = SEG_LEN_FULL - GAP;
+
+function makeArcCircle(color, dashLen, dashOffset) {
+  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute('cx', CX);
+  c.setAttribute('cy', CY);
+  c.setAttribute('r', R);
+  c.setAttribute('fill', 'none');
+  c.setAttribute('stroke', color);
+  c.setAttribute('stroke-width', STROKE);
+  c.setAttribute('stroke-dasharray', `${dashLen} ${CIRC - dashLen}`);
+  c.setAttribute('stroke-dashoffset', -dashOffset);
+  return c;
+}
+
+const ringGroup = document.getElementById('ringGroup');
+const legendEl = document.getElementById('legend');
+const modulesEl = document.getElementById('modules');
+const state = [];
+
+MODULES.forEach((mod, mi) => {
+  const segStart = mi * SEG_LEN_FULL;
+
+  // Track (unfilled potential) — always full segment length, drawn first.
+  ringGroup.appendChild(makeArcCircle('var(--track)', SEG_LEN, segStart));
+  // Achieved arc, drawn on top, length updated live.
+  const fg = makeArcCircle(mod.color, 0, segStart);
+  ringGroup.appendChild(fg);
+
+  const legendItem = document.createElement('li');
+  legendItem.innerHTML = `<span class="dot" style="background:${mod.color}"></span><span class="name">${mod.name}</span><span class="val" data-legend="${mi}">0 / ${MODULE_MAX}</span>`;
+  legendEl.appendChild(legendItem);
+
+  const modEl = document.createElement('section');
+  modEl.className = 'module';
+  const head = document.createElement('div');
+  head.className = 'module-head';
+  head.innerHTML = `<span class="dot" style="background:${mod.color}"></span><h2>${mod.name}</h2><span class="module-score" data-modscore="${mi}">0 / ${MODULE_MAX}</span>`;
+  modEl.appendChild(head);
+
+  const modState = { fg, subpoints: [] };
+
+  mod.subpoints.forEach(sp => {
+    const spEl = document.createElement('div');
+    spEl.className = 'subpoint';
+    const spMax = sp.items.reduce((s, it) => s + it.weight, 0);
+    const spHead = document.createElement('div');
+    spHead.className = 'subpoint-head';
+    const scoreSpan = document.createElement('span');
+    scoreSpan.className = 'subpoint-score';
+    scoreSpan.textContent = `0 / ${spMax}`;
+    const h3 = document.createElement('h3');
+    h3.textContent = sp.title;
+    spHead.appendChild(h3);
+    spHead.appendChild(scoreSpan);
+    spEl.appendChild(spHead);
+
+    const checksEl = document.createElement('div');
+    checksEl.className = 'checks';
+    const checkboxes = [];
+    sp.items.forEach(item => {
+      const label = document.createElement('label');
+      label.className = 'check';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.dataset.module = mi;
+      const textSpan = document.createElement('span');
+      textSpan.className = 'check-text';
+      textSpan.textContent = item.label;
+      const wSpan = document.createElement('span');
+      wSpan.className = 'check-w';
+      wSpan.textContent = `+${item.weight}`;
+      label.appendChild(input);
+      label.appendChild(textSpan);
+      label.appendChild(wSpan);
+      checksEl.appendChild(label);
+      checkboxes.push({ el: input, weight: item.weight });
+    });
+    spEl.appendChild(checksEl);
+    modEl.appendChild(spEl);
+    modState.subpoints.push({ scoreEl: scoreSpan, max: spMax, checkboxes });
+  });
+
+  modulesEl.appendChild(modEl);
+  state.push(modState);
+});
+
+const scoreTotalEl = document.getElementById('scoreTotal');
+const scoreLevelEl = document.getElementById('scoreLevel');
+
+function levelLabel(total) {
+  if (total < TOTAL_MAX * 0.4) return 'Ausbaufähig – viel Potenzial';
+  if (total < TOTAL_MAX * 0.7) return 'Solide Basis';
+  return 'Stark aufgestellt';
+}
+
+function recalc() {
+  let total = 0;
+  state.forEach((mod, mi) => {
+    let modScore = 0;
+    mod.subpoints.forEach(sp => {
+      const spScore = sp.checkboxes.reduce((s, c) => s + (c.el.checked ? c.weight : 0), 0);
+      sp.scoreEl.textContent = `${spScore} / ${sp.max}`;
+      modScore += spScore;
+    });
+    total += modScore;
+
+    document.querySelector(`[data-modscore="${mi}"]`).textContent = `${modScore} / ${MODULE_MAX}`;
+    document.querySelector(`[data-legend="${mi}"]`).textContent = `${modScore} / ${MODULE_MAX}`;
+
+    const fraction = modScore / MODULE_MAX;
+    mod.fg.setAttribute('stroke-dasharray', `${fraction * SEG_LEN} ${CIRC - fraction * SEG_LEN}`);
+  });
+
+  scoreTotalEl.textContent = total;
+  scoreLevelEl.textContent = levelLabel(total);
+}
+
+modulesEl.addEventListener('change', recalc);
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  modulesEl.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+  recalc();
+});
+
+recalc();
+</script>
+</body>
+</html>
