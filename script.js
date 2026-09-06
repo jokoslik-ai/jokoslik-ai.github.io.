@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  document.querySelectorAll('[data-interesse]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var select = document.getElementById('interesse');
+      if (select) select.value = el.getAttribute('data-interesse');
+    });
+  });
+
   var form = document.getElementById('leadForm');
   var status = document.getElementById('formStatus');
 
