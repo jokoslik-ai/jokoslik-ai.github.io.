@@ -287,10 +287,16 @@ textarea.input { min-height: 90px; resize: vertical; }
 .faq-item p { margin-top: 10px; color: var(--color-neutral-700); font-size: 14.5px; }
 
 /* — footer — */
-.site-footer { padding: 24px 0; font-size: 13px; color: var(--color-neutral-600); }
-.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.footer-nav { display: flex; gap: 20px; }
-.footer-nav a { color: var(--color-neutral-600); }
+.site-footer { padding: 40px 0 24px; font-size: 13px; color: var(--color-neutral-600); border-top: 1px solid var(--color-divider); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px; }
+.footer-brand { display: block; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; letter-spacing: 0.02em; color: var(--color-text); margin-bottom: 8px; }
+.footer-about p { max-width: 320px; margin: 0; }
+.footer-links, .footer-nav { display: flex; flex-direction: column; gap: 8px; }
+.footer-links-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text); margin-bottom: 2px; }
+.footer-links a, .footer-nav a { color: var(--color-neutral-600); }
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+}
 
 /* — responsive — */
 @media (max-width: 900px) {

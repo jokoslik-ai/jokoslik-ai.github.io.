@@ -7,15 +7,21 @@
 <meta name="description" content="Google Ads, Meta Ads, Datenanbindung und GA4-Audit im Detail – plus Starter-Begleitung für den Einstieg ohne Vorerfahrung.">
 <link rel="canonical" href="https://performatic-intelligence.de/leistungen.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preload" href="fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Performatic Intelligence">
 <meta property="og:locale" content="de_DE">
 <meta property="og:url" content="https://performatic-intelligence.de/leistungen.html">
 <meta property="og:title" content="Leistungen – Performatic Intelligence">
 <meta property="og:description" content="Google Ads, Meta Ads, Datenanbindung und GA4-Audit im Detail – plus Starter-Begleitung für den Einstieg ohne Vorerfahrung.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://performatic-intelligence.de/logo/og-3a.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Leistungen – Performatic Intelligence">
 <meta name="twitter:description" content="Google Ads, Meta Ads, Datenanbindung und GA4-Audit im Detail – plus Starter-Begleitung für den Einstieg ohne Vorerfahrung.">
+<meta name="twitter:image" content="https://performatic-intelligence.de/logo/og-3a.png">
 <link rel="stylesheet" href="styles.css">
 <!-- Google Consent Mode v2 – Default (muss vor Klaro/GTM stehen) -->
 <script>
@@ -79,7 +85,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section section-first">
     <div class="container">
 
-      <div class="leistung-block">
+      <div class="leistung-block" id="google-ads">
         <div class="num-lg">01</div>
         <div>
           <h2>Google Ads</h2>
@@ -94,7 +100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="leistung-block">
+      <div class="leistung-block" id="meta-ads">
         <div class="num-lg">02</div>
         <div>
           <h2>Meta Ads</h2>
@@ -109,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="leistung-block">
+      <div class="leistung-block" id="datenanbindung">
         <div class="num-lg">03</div>
         <div>
           <h2>Datenanbindung</h2>
@@ -123,7 +129,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="leistung-block">
+      <div class="leistung-block" id="ga4-audit">
         <div class="num-lg">04</div>
         <div>
           <h2>GA4- &amp; GTM-Audit</h2>
@@ -279,9 +285,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <span>Performatic Intelligence</span>
-    <nav class="footer-nav">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <span class="footer-brand">Performatic Intelligence</span>
+      <p>Online Marketing Beratung für kleine und mittlere Unternehmen im deutschsprachigen Raum – Google Ads, Meta Ads und GA4-Tracking, remote betreut.</p>
+    </div>
+    <nav class="footer-links" aria-label="Leistungen">
+      <span class="footer-links-title">Leistungen</span>
+      <a href="leistungen.html#google-ads">Google Ads Beratung</a>
+      <a href="leistungen.html#meta-ads">Meta Ads Beratung</a>
+      <a href="leistungen.html#datenanbindung">Datenanbindung &amp; Reporting</a>
+      <a href="leistungen.html#ga4-audit">GA4- &amp; GTM-Audit</a>
+      <a href="leistungen.html#starter">Starter-Begleitung</a>
+    </nav>
+    <nav class="footer-nav" aria-label="Rechtliches">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="mailto:kontakt@performatic-intelligence.de">kontakt@performatic-intelligence.de</a>
