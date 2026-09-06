@@ -13,8 +13,11 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 
 **Funnel-Logik (3 Stufen + Einstiegsangebot):**
 
-1. **Account-Audit** – kostenlos, 14 Prüfpunkte zu Kontostruktur/Tracking/Datenqualität.
-   Dient als Lead-Magnet und Vertrauensaufbau.
+1. **Account-Audit** – kostenlos, vier Module (Tracking & Datenqualität, Kontostruktur & Kanalwahl,
+   Zielgruppen-Match, Steuerung & Skalierbarkeit) mit je 5 Unterpunkten à max. 5 Punkten, Ergebnis
+   als Score 0–100. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
+   `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
+   nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
 2. **Audit** – 499 € einmalig. Tiefenanalyse inkl. Creatives, Landingpages, Wettbewerb,
    endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
 3. **Betreuung** – 249 € / Monat. Laufende Optimierung, monatlicher Review, monatlich kündbar.
@@ -85,6 +88,10 @@ styles.css         Gesamtes Styling, Design-Tokens, alle Komponenten
 script.js          Mobile-Nav-Toggle, Formspree-Submit-Handling
 impressum.html     Impressum (Platzhalter für Name/Adresse/Telefon/E-Mail)
 datenschutz.html   Datenschutzerklärung (DSGVO, Formspree-Hinweis, Tracking-Hinweis)
+audit-score-dashboard.html
+                   Internes Tool (nicht verlinkt): berechnet den Account-Audit-Score aus
+                   Checkboxen (4 Module × 5 Unterpunkte × max. 5 Punkte = 100), Donut-Chart-
+                   Visualisierung pro Modul, eigenständig/offline nutzbar
 fonts/             Selbst gehostete Schriftdateien (kein Google-Fonts-CDN)
   barlow-400-latin.woff2
   barlow-condensed-600-latin.woff2
