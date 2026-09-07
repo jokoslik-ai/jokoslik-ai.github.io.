@@ -351,10 +351,13 @@ textarea.input { min-height: 90px; resize: vertical; }
 .tier-block .soon-inline { font-size: 12.5px; font-weight: 600; color: var(--color-neutral-600); }
 .tier-block p { font-size: 14.5px; color: var(--color-neutral-800); margin: 8px 0 0; }
 .tier-block .btn-sm { margin-top: 14px; }
-.tier-steps { display: flex; flex-direction: column; gap: 12px; }
-.tier-steps .step { font-size: 14px; }
-.tier-steps .step .n { font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.12em; color: var(--color-accent-700); display: block; margin-bottom: 4px; }
-.tier-steps-note { font-size: 13px; color: var(--color-neutral-600); margin-top: 14px; }
+.tier-preview { margin: 0 0 16px; padding: 10px; width: fit-content; }
+.tier-preview img { display: block; width: 220px; max-width: 100%; height: auto; }
+.tier-preview figcaption { font-size: 11.5px; color: var(--color-neutral-600); margin-top: 8px; }
+.tier-steps { display: flex; flex-direction: column; gap: 8px; }
+.tier-steps .step { font-size: 12.5px; line-height: 1.35; }
+.tier-steps .step .n { font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.12em; color: var(--color-accent-700); display: block; margin-bottom: 3px; }
+.tier-steps-note { font-size: 12px; color: var(--color-neutral-600); margin-top: 10px; }
 
 @media (max-width: 720px) {
   .leistung-block { grid-template-columns: 1fr; }
