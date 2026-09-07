@@ -18,8 +18,9 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
    als Score 0–100. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
    `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
    nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
-2. **Audit** – 499 € einmalig. Tiefenanalyse inkl. Creatives, Landingpages, Wettbewerb,
-   endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
+2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
+   klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
+   Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
 3. **Betreuung** – 249 € / Monat. Laufende Optimierung, monatlicher Review, monatlich kündbar.
 4. **Starter-Begleitung** – 799 € einmalig. Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
@@ -29,7 +30,7 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 
 - **Kein Gewerbe angemeldet.** Es wird bewusst nur das kostenlose Account-Audit angeboten,
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
-- Audit (499 €), Betreuung (249 €/Monat) und Starter-Begleitung (799 €) werden auf der
+- Tiefenaudit (499 €), Betreuung (249 €/Monat) und Starter-Begleitung (799 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
   "Jetzt kaufen", nur informativ).
@@ -39,7 +40,7 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   angepasst werden:
   - `phase-banner`-Text in `index.html`, `leistungen.html` und den vier `leistung-*.html`-Seiten
   - `.soon` / `.soon-inline` Badges auf den Preis-Karten entfernen, CTA-Buttons einfügen
-  - FAQ-Eintrag "Bietest du aktuell auch das Audit oder eine Betreuung an?" anpassen/entfernen
+  - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
   - Impressum: Es fehlt aktuell noch komplett ein Umsatzsteuer-ID-Abschnitt (siehe
     Abschnitt 7, offener Punkt) – bei Gewerbeanmeldung ergänzen
   - Ggf. Gewerbe anmelden + ggf. Nebentätigkeit beim Arbeitgeber melden (auch wenn zunächst
@@ -91,7 +92,9 @@ leistungen.html    Übersichtsseite aller Leistungen (Google Ads, Meta Ads,
 leistung-account-audit.html
                    Detailseite Account-Audit (kostenlos)
 leistung-audit.html
-                   Detailseite Audit (499 €)
+                   Detailseite Tiefenaudit (499 €) – Dateiname bewusst unverändert
+                   auf "audit" belassen (nur der angezeigte Produktname wurde zu
+                   "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
                    Detailseite Betreuung (249 €/Monat)
 leistung-starter-begleitung.html
@@ -110,9 +113,11 @@ audit-score-dashboard.html
                    Visualisierung pro Modul, eigenständig/offline nutzbar
 favicon.svg        Favicon
 robots.txt         Verweist auf sitemap.xml unter der Live-Domain
-sitemap.xml        Listet aktuell nur index/leistungen/impressum/datenschutz –
-                   die vier leistung-*.html-Detailseiten und
-                   audit-score-dashboard.html fehlen (Stand der Prüfung)
+sitemap.xml        Listet alle acht öffentlichen Seiten (index, leistungen, die vier
+                   leistung-*.html-Detailseiten, impressum, datenschutz) mit
+                   `lastmod` aus der Git-Historie. `audit-score-dashboard.html` ist
+                   bewusst NICHT gelistet (siehe oben: nicht in der Hauptnavigation
+                   verlinktes internes Tool, soll nicht indexiert werden)
 CNAME              Enthält `performatic-intelligence.de` – Custom Domain ist
                    im Repo bereits hinterlegt
 images/            Bildmaterial (u. a. Beispiel-Score-Screenshot), eigenes README.md
@@ -150,7 +155,9 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   die vier `leistung-*.html`-Detailseiten (jeweils mit Preis-Tag) plus "Alle Leistungen
   ansehen"; daneben ein direkter CTA-Link "Kostenloses Account-Audit" und "FAQ". Der frühere
   Nav-Punkt "Preise" wurde durch "Kostenloses Account-Audit" ersetzt, ein separater
-  CTA-Button wurde entfernt.
+  CTA-Button wurde entfernt. `.site-header`-Hintergrund ist bewusst `--color-neutral-200`
+  statt `--color-neutral-100` (plus `box-shadow: var(--shadow-sm)`), damit sich die
+  sticky Kopfzeile sichtbarer vom fast gleichfarbigen `--color-bg` abhebt.
 
 ## 6. Rechtliche Eckpunkte (keine Rechtsberatung – Stand der Recherche)
 
@@ -207,7 +214,9 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       `performatic-intelligence.de` liegt zwar schon im Repo, aber ob die DNS-Records beim
       Registrar und die Pages-Settings selbst korrekt gesetzt sind, ist von hier aus nicht
       einsehbar (siehe Abschnitt 3)
-- [ ] `sitemap.xml` aktualisieren: die vier `leistung-*.html`-Detailseiten fehlen noch darin
+- [x] `sitemap.xml` aktualisiert (2026-09-07): enthält jetzt alle acht öffentlichen Seiten
+      inkl. der vier `leistung-*.html`-Detailseiten; `audit-score-dashboard.html` bewusst
+      weiterhin ausgeschlossen
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
       (siehe Abschnitt 2)
 - [ ] `Konzept-Performatic.md` (separates Dokument, außerhalb dieses Ordners) ist noch auf
