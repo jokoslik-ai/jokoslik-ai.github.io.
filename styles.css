@@ -91,24 +91,11 @@ p { margin: 0 0 var(--space-3); }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 .text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
 
-/* — blueprint / corner-marker component (Kernstück des visuellen Stils) — */
+/* — blueprint frame component (Kernstück des visuellen Stils) — */
 .blueprint {
   position: relative;
   border: 1px solid var(--color-divider);
 }
-.blueprint > .corner {
-  position: absolute; width: 11px; height: 11px;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-}
-.blueprint > .corner::before, .blueprint > .corner::after {
-  content: ""; position: absolute; background: currentColor;
-}
-.blueprint > .corner::before { left: 5px; top: 0; width: 1px; height: 100%; }
-.blueprint > .corner::after  { top: 5px; left: 0; width: 100%; height: 1px; }
-.blueprint > .corner.tl { top: -6px; left: -6px; }
-.blueprint > .corner.tr { top: -6px; right: -6px; }
-.blueprint > .corner.bl { bottom: -6px; left: -6px; }
-.blueprint > .corner.br { bottom: -6px; right: -6px; }
 .blueprint.dashed { border-style: dashed; }
 
 /* — buttons — */
@@ -250,6 +237,7 @@ textarea.input { min-height: 90px; resize: vertical; }
   border: 1px dashed var(--color-divider); border-radius: var(--radius-md);
   padding: 10px; margin-top: auto;
 }
+.bp-card .soon-link { margin-top: auto; }
 
 .section-more { margin-top: 22px; text-align: center; font-size: 14px; }
 .section-more a { font-weight: 600; }
@@ -292,6 +280,8 @@ textarea.input { min-height: 90px; resize: vertical; }
 .lead-form .full { grid-column: 1 / -1; }
 .consent { font-size: 12.5px; color: var(--color-accent-200); }
 .consent label { display: flex; gap: 8px; align-items: flex-start; }
+.consent label > input { flex-shrink: 0; margin-top: 3px; }
+.consent label > span { flex: 1; min-width: 0; }
 .consent a { color: var(--color-accent-100); }
 .form-status { text-align: center; margin-top: 6px; font-weight: 600; padding: 10px; border-radius: var(--radius-md); }
 .form-status.ok { background: #e4f9d6; color: #2c5b0e; }

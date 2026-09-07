@@ -136,12 +136,12 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   gedämpfter Blauton als Akzent (`--color-accent:#5980a6`), dazu 9-stufige Neutral- und
   Akzent-Farbramps (100–900) für Kontrastvarianten (helle/dunkle Bänder).
 - **Schriften:** "Barlow" (Fließtext, 400) und "Barlow Condensed" (Überschriften/Buttons,
-  600), sollen lokal als `.woff2` eingebunden sein – **bewusst kein Google-Fonts-CDN**, aus
-  Datenschutzgründen (IP-Übertragung an Google beim Seitenaufruf). Die `.woff2`-Dateien
-  fehlen aber aktuell im Repo (siehe Abschnitt 4, kaputte Font-Einbindung).
-- **Signature-Komponente:** `.blueprint` / `.corner` – dünner Rahmen + kleine Eckmarkierungen
-  ("Konstruktionsplan"-Look), wird auf Karten (`.bp-card`), dem Hero-Datenblatt
-  (`.datasheet`) und dem Starter-Callout (`.starter-card`) verwendet.
+  600), beide lokal als `.woff2` eingebunden – **bewusst kein Google-Fonts-CDN**, aus
+  Datenschutzgründen (IP-Übertragung an Google beim Seitenaufruf).
+- **Signature-Komponente:** `.blueprint` – dünner Rahmen ("Konstruktionsplan"-Look), wird auf
+  Karten (`.bp-card`), dem Hero-Datenblatt (`.datasheet`) und dem Starter-Callout
+  (`.starter-card`) verwendet. Die ursprünglichen Eckmarkierungen (`.corner`, ein
+  Plus-Symbol an jeder Ecke) wurden entfernt, nur der Rahmen ist geblieben.
 - **Layout-Bausteine:** `.section`, `.card-grid` (4er/3er-Raster), `.band-dark` /
   `.band-accent` (Kontrastbänder für Messgrundlage-Argument bzw. Kontaktformular),
   `.leistung-block` / `.tier-block` (für die Leistungsseiten).
