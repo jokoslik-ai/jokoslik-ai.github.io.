@@ -109,9 +109,10 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - **Schriften:** "Barlow" (Fließtext, 400) und "Barlow Condensed" (Überschriften/Buttons,
   600), beide lokal als `.woff2` eingebunden – **bewusst kein Google-Fonts-CDN**, aus
   Datenschutzgründen (IP-Übertragung an Google beim Seitenaufruf).
-- **Signature-Komponente:** `.blueprint` / `.corner` – dünner Rahmen + kleine Eckmarkierungen
-  ("Konstruktionsplan"-Look), wird auf Karten (`.bp-card`), dem Hero-Datenblatt
-  (`.datasheet`) und dem Starter-Callout (`.starter-card`) verwendet.
+- **Signature-Komponente:** `.blueprint` – dünner Rahmen ("Konstruktionsplan"-Look), wird auf
+  Karten (`.bp-card`), dem Hero-Datenblatt (`.datasheet`) und dem Starter-Callout
+  (`.starter-card`) verwendet. Die ursprünglichen Eckmarkierungen (`.corner`, ein
+  Plus-Symbol an jeder Ecke) wurden entfernt, nur der Rahmen ist geblieben.
 - **Layout-Bausteine:** `.section`, `.card-grid` (4er/3er-Raster), `.band-dark` /
   `.band-accent` (Kontrastbänder für Messgrundlage-Argument bzw. Kontaktformular),
   `.leistung-block` / `.tier-block` (neu, für die ausführliche Leistungsseite).
