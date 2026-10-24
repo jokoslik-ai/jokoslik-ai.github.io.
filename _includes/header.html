@@ -1,0 +1,28 @@
+{%- if include.home -%}{%- assign home = "" -%}{%- else -%}{%- assign home = "index.html" -%}{%- endif -%}
+<div class="phase-banner">
+  <div class="container">
+    <p>Aktuell in der Marktsondierung: Wir bieten ausschließlich das <strong>kostenlose Account-Audit</strong> an. Preise für Tiefenaudit &amp; Betreuung unten sind Richtwerte für später und noch nicht buchbar.</p>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ home }}#top" class="logo"><img src="logo/logo-3a-mark-light.svg" alt="" width="32" height="32"><span>Performatic Intelligence</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-item">
+        <a href="leistungen.html">Leistungen <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="leistung-account-audit.html">Kostenloses Account-Audit</a>
+          <a href="leistung-audit.html">Tiefenaudit</a>
+          <a href="leistung-betreuung.html">Betreuung</a>
+          <a href="leistung-starter-begleitung.html">Starter-Begleitung</a>
+          <a href="leistungen.html" class="nav-dropdown-all">Alle Leistungen ansehen</a>
+        </div>
+      </div>
+      <a href="{{ home }}#faq">FAQ</a>
+    </nav>
+  </div>
+</header>

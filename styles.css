@@ -269,6 +269,9 @@ select.input {
 .band-accent { background: var(--color-accent-900); color: var(--color-bg); padding: 56px 0; }
 .band-accent h2 { color: var(--color-bg); }
 .band-accent .lede { color: var(--color-accent-200); font-size: 16px; max-width: 50ch; }
+/* Kontakt: Text oben, Formular darunter in voller Breite */
+.kontakt-stack { display: flex; flex-direction: column; gap: 26px; }
+.kontakt-intro .lede { max-width: 70ch; margin: 0; }
 .lead-form { display: flex; flex-direction: column; gap: 14px; }
 /* mobile first: 1 Spalte, ab Tablet 2 Spalten */
 .lead-form-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }

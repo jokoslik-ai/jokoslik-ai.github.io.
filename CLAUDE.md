@@ -52,8 +52,8 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   weist Besucher explizit auf diesen Status hin.
 - **Wichtig für später:** Sobald die Bezahlangebote live gehen, müssen folgende Stellen
   angepasst werden:
-  - `phase-banner`-Text in `index.html`, `leistungen.html` und den vier `leistung-*.html`-Seiten
-  - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `index.html` und `leistungen.html`,
+  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sechs Seiten)
+  - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `_includes/preise.html`,
     Einstiegs-Karten in `leistungen.html#einstieg`, `leistung-*.html`), CTA-Buttons einfügen
   - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
   - Impressum: Es fehlt aktuell noch komplett ein Umsatzsteuer-ID-Abschnitt (siehe
@@ -63,9 +63,21 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 
 ## 3. Tech-Stack
 
-- **Reines statisches HTML/CSS/JS**, kein Build-Step, kein Framework, kein Backend.
+- **Statisches HTML/CSS/JS**, kein Framework, kein Backend. **Seit 2026-10-24 mit Jekyll-Includes:**
+  GitHub Pages baut die Seite mit Jekyll (eingebaut, keine eigene Action). Wiederkehrende Blöcke
+  liegen genau einmal in `_includes/` und werden per `{% include … %}` eingesetzt:
+  `header.html` (Phase-Banner + Kopfzeile; auf `index.html` mit `home=true`, sonst verlinken Logo/
+  FAQ auf `index.html#…`), `footer.html`, `module-karten.html` (Parameter `prefix`: Linkziel der
+  Modul-Karten), `preise.html` ("Zusammenarbeit & Preise"), `kontakt.html` (Kontaktformular).
+  **Änderungen an diesen Blöcken nur in `_includes/` vornehmen.** Seiten mit Includes brauchen
+  Front Matter (`---`/`---` in den ersten zwei Zeilen); `impressum.html`, `datenschutz.html` und
+  `audit-score-dashboard.html` haben keins und werden unverändert kopiert. `_config.yml`
+  schließt die `.md`-Dateien (u. a. diese Datei) von der Veröffentlichung aus.
+  **Lokale Vorschau:** Doppelklick auf eine HTML-Datei zeigt nur die `{% include %}`-Platzhalter.
+  Stattdessen `gem install jekyll -v 3.10.0` (Version wie GitHub Pages) und `jekyll serve` im
+  Repo-Root, dann http://localhost:4000 öffnen.
 - Formular-Versand über **Formspree** (`https://formspree.io/f/xppzlnbe`, fest in
-  `index.html` und `leistungen.html` eingetragen). JS in `script.js` nutzt `fetch()` mit
+  `_includes/kontakt.html` eingetragen, eingebunden in `index.html` und `leistungen.html`). JS in `script.js` nutzt `fetch()` mit
   `FormData`-Body und `Accept: application/json`-Header gegen diesen Endpoint und zeigt
   eine Inline-Statusmeldung anhand des HTTP-Status (`response.ok`) an. Die Checkboxen
   `kanaele` werden vor dem Senden zu einem kommagetrennten Feld zusammengefasst.
@@ -105,9 +117,9 @@ leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verl
                    auf die Detailblöcke #search-ads, #meta-ads, #ga4-audit,
                    #gtm-audit, #datenanbindung, #datenvisualisierung), darunter
                    "Welcher Einstieg passt zu dir?" (#einstieg), dann
-                   "Zusammenarbeit & Preise" (#preise) – **1:1 identisch mit
-                   index.html, bei Änderungen beide Dateien pflegen** – und eigenes
-                   Kontaktformular
+                   "Zusammenarbeit & Preise" (#preise) und Kontaktformular –
+                   Module, Preise und Formular kommen aus `_includes/` und sind
+                   damit automatisch identisch mit index.html
 leistung-account-audit.html
                    Detailseite Account-Audit (kostenlos)
 leistung-audit.html
@@ -130,6 +142,9 @@ audit-score-dashboard.html
                    Internes Tool (nicht verlinkt): berechnet den Account-Audit-Score aus
                    Checkboxen (4 Module × 5 Unterpunkte × max. 5 Punkte = 100), Donut-Chart-
                    Visualisierung pro Modul, eigenständig/offline nutzbar
+_includes/          Gemeinsame Blöcke (header, footer, module-karten, preise,
+                   kontakt) – siehe Abschnitt 3
+_config.yml        Jekyll-Konfiguration (schließt .md-Dateien vom Build aus)
 favicon.svg        Favicon
 robots.txt         Verweist auf sitemap.xml unter der Live-Domain
 sitemap.xml        Listet alle acht öffentlichen Seiten (index, leistungen, die vier
@@ -157,8 +172,9 @@ aktuell 404. Muss noch behoben werden (Dateien ergänzen oder Fallback-Stack anp
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
 Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
-Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): mobil 1 Spalte, ab
-Tablet 2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
+Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): Einleitungstext steht
+über dem Formular (`.kontakt-stack`), Formular in voller Breite, mobil 1 Spalte, ab Tablet
+2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
 auf Desktop) und eigenem SVG-Pfeil. **Begründung:** Der Großteil des Traffics und der
 Anfragen wird über Mobilgeräte erwartet. Hinweis: Große Teile des bestehenden `styles.css`
 sind noch desktop-first (`max-width`-Queries) geschrieben; bei Überarbeitungen schrittweise
