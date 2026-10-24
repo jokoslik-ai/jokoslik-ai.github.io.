@@ -1,0 +1,182 @@
+/* ===========================================================
+   Performatic Intelligence — Design-Tokens
+   Quelle: Designsystem "Performatic Intelligence" (tokens.json).
+   Hell = Standard; dunkel folgt der Systemeinstellung
+   (prefers-color-scheme) oder data-theme="dark" am <html>.
+   Schriften sind selbst gehostet (Barlow, OFL 1.1, siehe
+   fonts/OFL.txt) – kein Google-Fonts-CDN, aus Datenschutzgründen.
+   =========================================================== */
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/Barlow-Regular.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/Barlow-Medium.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/BarlowCondensed-SemiBold.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/BarlowCondensed-Bold.woff2") format('woff2');
+}
+/* Kontrastflächen bleiben in beiden Modi dunkel: sie nutzen den hellen Token-Satz. */
+:root,
+:root[data-theme="light"],
+.band-dark,
+.band-accent,
+.phase-banner,
+.datasheet-row.highlight {
+  color-scheme: light;
+  --color-bg: #f2f2f3;
+  --color-surface: #e9e9ea;
+  --color-text: #1d1f20;
+  --color-accent: #5980a6;
+  --color-accent-2: #728fab;
+  --color-text-secondary: var(--color-neutral-800);
+  --color-text-tertiary: var(--color-neutral-700);
+  --color-divider: #1d1f2929;
+  --color-banner-strong: #ffffff;
+  --color-neutral-100: #f5f5f8;
+  --color-neutral-200: #e7e7ea;
+  --color-neutral-300: #d4d4d7;
+  --color-neutral-400: #b7b7ba;
+  --color-neutral-500: #98989b;
+  --color-neutral-600: #7a7a7d;
+  --color-neutral-700: #5d5d60;
+  --color-neutral-800: #424244;
+  --color-neutral-900: #2b2b2d;
+  --color-accent-100: #eef6ff;
+  --color-accent-200: #d6ebff;
+  --color-accent-300: #b5d9fd;
+  --color-accent-400: #94bce3;
+  --color-accent-500: #749dc4;
+  --color-accent-600: #597ea3;
+  --color-accent-700: #416180;
+  --color-accent-800: #2c455d;
+  --color-accent-900: #1d2d3d;
+  --color-status-ok-bg: #e4f9d6;
+  --color-status-ok-text: #2c5b0e;
+  --color-status-error-bg: #fde2e2;
+  --color-status-error-text: #8a1f1f;
+  --shadow-sm: 0 1px 2px #2b2b2d24;
+  --shadow-md: 0 3px 10px #2b2b2d29;
+  --shadow-lg: 0 12px 32px #2b2b2d38;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #1d1f20;
+    --color-surface: #2b2b2d;
+    --color-text: #f2f2f3;
+    --color-accent: #94bce3;
+    --color-accent-2: #728fab;
+    --color-text-secondary: var(--color-neutral-800);
+    --color-text-tertiary: var(--color-neutral-700);
+    --color-divider: #f2f2f329;
+    --color-banner-strong: #1d1f20;
+    --color-neutral-100: #2b2b2d;
+    --color-neutral-200: #424244;
+    --color-neutral-300: #5d5d60;
+    --color-neutral-400: #7a7a7d;
+    --color-neutral-500: #98989b;
+    --color-neutral-600: #b7b7ba;
+    --color-neutral-700: #d4d4d7;
+    --color-neutral-800: #e7e7ea;
+    --color-neutral-900: #f5f5f8;
+    --color-accent-100: #1d2d3d;
+    --color-accent-200: #2c455d;
+    --color-accent-300: #416180;
+    --color-accent-400: #597ea3;
+    --color-accent-500: #749dc4;
+    --color-accent-600: #94bce3;
+    --color-accent-700: #b5d9fd;
+    --color-accent-800: #d6ebff;
+    --color-accent-900: #eef6ff;
+    --color-status-ok-bg: #1f3a12;
+    --color-status-ok-text: #cdeeb8;
+    --color-status-error-bg: #4a1717;
+    --color-status-error-text: #ffd0d0;
+    --shadow-sm: 0 1px 2px #00000066;
+    --shadow-md: 0 3px 10px #0000007a;
+    --shadow-lg: 0 12px 32px #0000008f;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #1d1f20;
+  --color-surface: #2b2b2d;
+  --color-text: #f2f2f3;
+  --color-accent: #94bce3;
+  --color-accent-2: #728fab;
+  --color-text-secondary: var(--color-neutral-800);
+  --color-text-tertiary: var(--color-neutral-700);
+  --color-divider: #f2f2f329;
+  --color-banner-strong: #1d1f20;
+  --color-neutral-100: #2b2b2d;
+  --color-neutral-200: #424244;
+  --color-neutral-300: #5d5d60;
+  --color-neutral-400: #7a7a7d;
+  --color-neutral-500: #98989b;
+  --color-neutral-600: #b7b7ba;
+  --color-neutral-700: #d4d4d7;
+  --color-neutral-800: #e7e7ea;
+  --color-neutral-900: #f5f5f8;
+  --color-accent-100: #1d2d3d;
+  --color-accent-200: #2c455d;
+  --color-accent-300: #416180;
+  --color-accent-400: #597ea3;
+  --color-accent-500: #749dc4;
+  --color-accent-600: #94bce3;
+  --color-accent-700: #b5d9fd;
+  --color-accent-800: #d6ebff;
+  --color-accent-900: #eef6ff;
+  --color-status-ok-bg: #1f3a12;
+  --color-status-ok-text: #cdeeb8;
+  --color-status-error-bg: #4a1717;
+  --color-status-error-text: #ffd0d0;
+  --shadow-sm: 0 1px 2px #00000066;
+  --shadow-md: 0 3px 10px #0000007a;
+  --shadow-lg: 0 12px 32px #0000008f;
+}
+
+:root {
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 30px;
+  --fs-3xl: 44px;
+  --fs-4xl: 58px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-md: 4px;
+  --max-width: 1180px;
+  --font-heading: "Barlow Condensed", system-ui, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: "Barlow", system-ui, sans-serif;
+}
