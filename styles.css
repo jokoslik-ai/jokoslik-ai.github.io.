@@ -128,8 +128,18 @@ p { margin: 0 0 var(--space-3); }
 }
 .input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
 textarea.input { min-height: 90px; resize: vertical; }
+/* Selects flach statt nativer 3D-Optik (Desktop-Browser), eigener Pfeil */
+select.input {
+  -webkit-appearance: none; appearance: none; padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231d1f20' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+}
 .field-dark > label { color: var(--color-accent-200); }
 .field-dark .input { background: var(--color-accent-800); border-color: var(--color-accent-700); color: var(--color-bg); }
+.field-dark select.input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23d6ebff' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+}
 
 /* — layout shell — */
 .eyebrow {
@@ -260,7 +270,9 @@ textarea.input { min-height: 90px; resize: vertical; }
 .band-accent h2 { color: var(--color-bg); }
 .band-accent .lede { color: var(--color-accent-200); font-size: 16px; max-width: 50ch; }
 .lead-form { display: flex; flex-direction: column; gap: 14px; }
-.lead-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* mobile first: 1 Spalte, ab Tablet 2 Spalten */
+.lead-form-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 721px) { .lead-form-grid { grid-template-columns: 1fr 1fr; } }
 .lead-form .full { grid-column: 1 / -1; }
 .checkbox-group { margin: 0; padding: 0; border: none; min-width: 0; }
 .checkbox-group legend { padding: 0; font-size: 12px; margin-bottom: 8px; color: var(--color-accent-200); }
@@ -301,7 +313,6 @@ textarea.input { min-height: 90px; resize: vertical; }
   .band-grid { grid-template-columns: 1fr; }
   .band-compare { grid-template-columns: 1fr; }
   .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .lead-form-grid { grid-template-columns: 1fr; }
   .starter-grid { grid-template-columns: 1fr; gap: 22px; }
 }
 @media (max-width: 720px) {
