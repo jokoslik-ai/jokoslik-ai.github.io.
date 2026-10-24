@@ -358,3 +358,14 @@ select.input {
   .hero::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M12 16h8M16 12v8' stroke='%23f2f2f3' stroke-opacity='.14' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); }
   select.input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23f2f2f3' stroke-width='1.6'/%3E%3C/svg%3E"); }
 }
+
+/* — Feste Aktionsleiste am Handy (blendet sich per script.js aus, solange ein Hero-/Formularbereich sichtbar ist) — */
+.cta-bar { display: none; }
+@media (max-width: 720px) {
+  .cta-bar:not([hidden]) {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    background: var(--color-bg); border-top: 1px solid var(--color-divider); box-shadow: var(--shadow-md);
+  }
+  body.has-cta-bar { padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom, 0px)); }
+}
