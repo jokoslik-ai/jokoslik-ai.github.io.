@@ -128,6 +128,8 @@ p { margin: 0 0 var(--space-3); }
 }
 .input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 0; }
 textarea.input { min-height: 90px; resize: vertical; }
+/* einheitlich ohne nativen Dropdown-Pfeil (Desktop-Browser zeigen ihn sonst zusätzlich) */
+select.input { -webkit-appearance: none; appearance: none; }
 .field-dark > label { color: var(--color-accent-200); }
 .field-dark .input { background: var(--color-accent-800); border-color: var(--color-accent-700); color: var(--color-bg); }
 
@@ -260,7 +262,9 @@ textarea.input { min-height: 90px; resize: vertical; }
 .band-accent h2 { color: var(--color-bg); }
 .band-accent .lede { color: var(--color-accent-200); font-size: 16px; max-width: 50ch; }
 .lead-form { display: flex; flex-direction: column; gap: 14px; }
-.lead-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* mobile first: 1 Spalte, ab Tablet 2 Spalten */
+.lead-form-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 721px) { .lead-form-grid { grid-template-columns: 1fr 1fr; } }
 .lead-form .full { grid-column: 1 / -1; }
 .checkbox-group { margin: 0; padding: 0; border: none; min-width: 0; }
 .checkbox-group legend { padding: 0; font-size: 12px; margin-bottom: 8px; color: var(--color-accent-200); }
@@ -301,7 +305,6 @@ textarea.input { min-height: 90px; resize: vertical; }
   .band-grid { grid-template-columns: 1fr; }
   .band-compare { grid-template-columns: 1fr; }
   .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .lead-form-grid { grid-template-columns: 1fr; }
   .starter-grid { grid-template-columns: 1fr; gap: 22px; }
 }
 @media (max-width: 720px) {
