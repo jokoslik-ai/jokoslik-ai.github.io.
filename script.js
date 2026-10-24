@@ -18,6 +18,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Feste Aktionsleiste (nur Handy, siehe .cta-bar): sichtbar, solange weder die Hero-Buttons,
+  // das Kontaktformular noch die Fußzeile im Bild sind und das Menü geschlossen ist.
+  var ctaBar = document.getElementById('ctaBar');
+  if (ctaBar && 'IntersectionObserver' in window) {
+    var targets = document.querySelectorAll('.hero-actions, .product-cta-band, #kontakt, .site-footer');
+    var inView = new Set();
+    var update = function () {
+      var navOpen = nav && nav.classList.contains('open');
+      ctaBar.hidden = inView.size > 0 || navOpen;
+      document.body.classList.toggle('has-cta-bar', !ctaBar.hidden);
+    };
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) inView.add(e.target); else inView.delete(e.target);
+      });
+      update();
+    });
+    targets.forEach(function (t) { observer.observe(t); });
+    if (toggle) toggle.addEventListener('click', update);
+    update();
+  }
+
   document.querySelectorAll('[data-interesse]').forEach(function (el) {
     el.addEventListener('click', function () {
       var select = document.getElementById('interesse');

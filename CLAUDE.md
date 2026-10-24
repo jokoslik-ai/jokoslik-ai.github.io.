@@ -178,11 +178,16 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 überholt; maßgeblich sind `tokens.css` und das Designsystem.
 
 **Akzent-Update (Variante A, kräftigeres Blau):** Akzent-Rampe 100–900 in `tokens.css` neu
-(`accent-700` = `#295d99`, Farbton 212°). Neu: Blueprint-Plusraster im Hero (`.hero::before`),
-hervorgehobenes Wort in der Hero-Überschrift (`.hl`), Kontaktband in `accent-700`
+(`accent-700` = `#295d99`, Farbton 212°). Neu: hervorgehobenes Wort in der Hero-Überschrift (`.hl`), Kontaktband in `accent-700`
 (`.band-accent`), Hover-Rahmen auf Karten/FAQ, `.section-alt` (Abschnitt auf `color-surface`),
 Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
 (C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
+
+**Handy-Leiste und Score-Grafik:** `.cta-bar` (in `_includes/footer.html`, Logik in `script.js`)
+ist nur ≤720px sichtbar und wird ausgeblendet, solange `.hero-actions`, `.product-cta-band`,
+`#kontakt` oder `.site-footer` im Bild sind oder das Menü offen ist. Der Beispiel-Score auf
+`leistung-account-audit.html` ist jetzt `images/beispielscore.svg` (transparent, Hell/Dunkel
+im SVG per `prefers-color-scheme`, Blautöne statt Grün/Lila/Gelb); das alte PNG wurde entfernt.
 
 **Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
