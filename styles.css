@@ -313,8 +313,8 @@ select.input {
 .leistung-detail-list li { position: relative; padding-left: var(--space-6); font-size: var(--fs-sm); color: var(--color-text-secondary); }
 .leistung-detail-list li::before { content: "–"; position: absolute; left: 0; color: var(--color-accent-700); }
 
-.tier-steps { display: flex; flex-direction: column; gap: var(--space-2); }
-.tier-steps .step { font-size: var(--fs-xs); line-height: 1.35; }
+.tier-steps { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6); }
+.tier-steps .step { font-size: var(--fs-lg); line-height: 1.5; color: var(--color-text-secondary); max-width: 62ch; }
 .tier-steps .step .n { font-family: var(--font-heading); font-size: var(--fs-xs); letter-spacing: 0.12em; color: var(--color-accent-700); display: block; margin-bottom: 3px; }
 .tier-steps-note { font-size: var(--fs-xs); color: var(--color-text-tertiary); margin-top: var(--space-3); }
 
