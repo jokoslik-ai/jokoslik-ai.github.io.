@@ -157,8 +157,9 @@ aktuell 404. Muss noch behoben werden (Dateien ergänzen oder Fallback-Stack anp
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
 Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
-Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): mobil 1 Spalte, ab
-Tablet 2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
+Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): Einleitungstext steht
+über dem Formular (`.kontakt-stack`), Formular in voller Breite, mobil 1 Spalte, ab Tablet
+2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
 auf Desktop) und eigenem SVG-Pfeil. **Begründung:** Der Großteil des Traffics und der
 Anfragen wird über Mobilgeräte erwartet. Hinweis: Große Teile des bestehenden `styles.css`
 sind noch desktop-first (`max-width`-Queries) geschrieben; bei Überarbeitungen schrittweise
