@@ -325,7 +325,7 @@ select.input {
 .product-head .price span { font-size: var(--fs-xs); font-weight: 400; color: var(--color-text-tertiary); }
 .product-head .soon-inline { font-size: var(--fs-xs); font-weight: 600; color: var(--color-text-tertiary); }
 .product-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-12); align-items: start; }
-.product-grid p { font-size: var(--fs-base); color: var(--color-text-secondary); margin: 0 0 var(--space-4); max-width: 62ch; }
+.product-grid p { font-size: var(--fs-lg); color: var(--color-text-secondary); margin: 0 0 var(--space-4); max-width: 62ch; }
 .product-preview { padding: var(--space-4); width: fit-content; }
 .product-preview img { display: block; width: 320px; max-width: 100%; height: auto; }
 .product-preview figcaption { font-size: var(--fs-xs); color: var(--color-text-tertiary); margin-top: var(--space-3); }
