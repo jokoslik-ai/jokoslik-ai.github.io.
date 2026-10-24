@@ -372,7 +372,7 @@ select.input {
 .who li strong { color: var(--color-text); }
 #ueber { padding-top: 0; }
 @media (min-width: 721px) {
-  .intro-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; gap: var(--space-8); }
+  .intro-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: var(--space-8); }
 }
 @media (min-width: 901px) {
   .intro-grid { gap: var(--space-12); }
