@@ -193,8 +193,8 @@ Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neu
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
 Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
-der Startseite (Variante A: Text + Karte "Für wen ist das?"). Hero-Text, Meta-Beschreibung und
-Fußzeile nennen noch "kleine und mittlere Unternehmen" und sind noch nicht angeglichen.
+der Startseite (Variante A: Text + Karte "Für wen ist das?"). Die Fußzeile nennt "Selbstständige und kleine Unternehmen". Die Beschreibung im JSON-LD-Block
+(`index.html`) sagt bewusst noch "kleine und mittlere Unternehmen" (so belassen); der Hero-Text nennt keine Zielgruppe.
 
 **Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die sechs Modul-Karten (`_includes/module-karten.html`)
 haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG, `currentColor`). Das Messgrundlage-Band ist
