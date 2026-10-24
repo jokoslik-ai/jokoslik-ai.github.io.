@@ -1,0 +1,76 @@
+  <section id="kontakt" class="band-accent">
+    <div class="container kontakt-stack">
+      <div class="kontakt-intro">
+        <h2>Jetzt Kontakt aufnehmen</h2>
+        <p class="lede">Du möchtest jetzt starten oder für dein Business im Online-Marketing endlich ein solides Fundament bauen? Gemeinsam legen wir los und finden die Lösung, die genau zu deinem Unternehmen passt.</p>
+      </div>
+      <form id="leadForm" class="lead-form" action="https://formspree.io/f/xppzlnbe" method="POST">
+        <div class="lead-form-grid">
+          <div class="field field-dark">
+            <label for="name">Name*</label>
+            <input class="input" type="text" id="name" name="name" required>
+          </div>
+          <div class="field field-dark">
+            <label for="email">Geschäftliche E-Mail*</label>
+            <input class="input" type="email" id="email" name="email" placeholder="name@unternehmen.de" required>
+          </div>
+          <div class="field field-dark">
+            <label for="shop">Unternehmens-Website</label>
+            <input class="input" type="url" id="shop" name="shop" placeholder="https://">
+          </div>
+          <div class="field field-dark">
+            <label for="budget">Ungefähres Werbebudget/Monat</label>
+            <select class="input" id="budget" name="budget">
+              <option value="unter-1000">unter 1.000 €</option>
+              <option value="1000-5000">1.000–5.000 €</option>
+              <option value="5000-15000">5.000–15.000 €</option>
+              <option value="ueber-15000">über 15.000 €</option>
+            </select>
+          </div>
+          <fieldset class="field field-dark full checkbox-group">
+            <legend>Aktive Kanäle</legend>
+            <label><input type="checkbox" name="kanaele" value="Google Ads"> Google Ads</label>
+            <label><input type="checkbox" name="kanaele" value="Microsoft Ads"> Microsoft Ads</label>
+            <label><input type="checkbox" name="kanaele" value="Meta Ads"> Meta Ads</label>
+            <label><input type="checkbox" name="kanaele" value="Sonstige"> Sonstige</label>
+            <label><input type="checkbox" name="kanaele" value="Noch keine"> Noch keine</label>
+          </fieldset>
+          <div class="field field-dark">
+            <label for="ausgangslage">Ausgangslage</label>
+            <select class="input" id="ausgangslage" name="ausgangslage">
+              <option value="">Bitte wählen</option>
+              <option value="kein-setup">Noch keine Kanäle / kein Tracking</option>
+              <option value="qualitaet-unklar">Kanäle laufen – Qualität unklar</option>
+              <option value="optimieren">Setup steht – soll besser werden</option>
+              <option value="konkretes-problem">Konkretes Problem (z.&nbsp;B. Tracking, Reporting)</option>
+            </select>
+          </div>
+          <div class="field field-dark">
+            <label for="interesse">Interesse an</label>
+            <select class="input" id="interesse" name="interesse">
+              <option value="account-audit">Kostenloses Account-Audit</option>
+              <option value="audit">Tiefenaudit 499&nbsp;€ (bald verfügbar)</option>
+              <option value="betreuung">Betreuung ab 249&nbsp;€/Monat (bald verfügbar)</option>
+              <option value="starter">Starter-Begleitung (bald verfügbar)</option>
+              <option value="unsicher">Noch unsicher</option>
+            </select>
+          </div>
+          <div class="field field-dark full">
+            <label for="nachricht">Nachricht</label>
+            <textarea class="input" id="nachricht" name="nachricht" rows="4" placeholder="Kurz beschreiben, wo der Schuh drückt..."></textarea>
+          </div>
+          <div class="full consent">
+            <label>
+              <input type="checkbox" name="datenschutz" required>
+              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Kontaktaufnahme einverstanden.*</span>
+            </label>
+          </div>
+          <div class="full">
+            <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
+          </div>
+        </div>
+        <div style="font-size:12px; color:var(--color-accent-300); text-align:center">Antwort innerhalb von 2 Werktagen. Kein Newsletter.</div>
+      </form>
+      <p id="formStatus" class="form-status" hidden></p>
+    </div>
+  </section>
