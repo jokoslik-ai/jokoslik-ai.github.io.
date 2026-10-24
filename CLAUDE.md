@@ -55,7 +55,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   - `phase-banner`-Text in `_includes/header.html` (gilt für alle sechs Seiten)
   - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `_includes/preise.html`,
     Einstiegs-Karten in `leistungen.html#einstieg`, `leistung-*.html`), CTA-Buttons einfügen
-  - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
+  - FAQ-Eintrag "Bietet ihr aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
   - Impressum: Es fehlt aktuell noch komplett ein Umsatzsteuer-ID-Abschnitt (siehe
     Abschnitt 7, offener Punkt) – bei Gewerbeanmeldung ergänzen
   - Ggf. Gewerbe anmelden + ggf. Nebentätigkeit beim Arbeitgeber melden (auch wenn zunächst
@@ -169,8 +169,12 @@ Barlow Condensed 600/700, aus github.com/jpt/barlow, SIL OFL 1.1, Lizenztext `fo
 
 ## 5. Design-System
 
-**Quelle:** Das Designsystem "Performatic Intelligence" wurde in Claude gebaut; `tokens.css` wird von dort ins
-Repo übernommen. Änderungen an Tokens zuerst im Designsystem vornehmen.
+**Quelle:** Das Design wird primär in Claude Design gebaut und angepasst (Designsystem "Performatic
+Intelligence"), dann ins Repo übertragen (`tokens.css`), damit die Definitionen von dort automatisch
+und dynamisch live gehen können. Änderungen an Tokens zuerst in Claude Design vornehmen.
+
+**Ansprache:** Die Website spricht im Plural ("wir") und duzt Besucher. Texte ohne "ich/mir" schreiben
+(Ausnahme: Formulartexte aus Besuchersicht, z. B. Datenschutz-Checkbox, FAQ-Fragen).
 
 **Stand 2026-10-24:** Tokens liegen in `tokens.css` (Hell = Standard, Dunkel per
 `prefers-color-scheme`; Kontrastflächen `.band-dark`/`.band-accent`/`.phase-banner` bleiben

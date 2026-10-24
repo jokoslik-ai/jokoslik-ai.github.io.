@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
       })
         .then(function (response) {
           if (response.ok) {
-            showStatus('Danke! Ich melde mich innerhalb von 2 Werktagen bei dir.', 'ok');
+            showStatus('Danke! Wir melden uns innerhalb von 2 Werktagen bei dir.', 'ok');
             form.reset();
           } else {
-            showStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib mir direkt per E-Mail.', 'error');
+            showStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt per E-Mail.', 'error');
           }
         })
         .catch(function () {
-          showStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib mir direkt per E-Mail.', 'error');
+          showStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt per E-Mail.', 'error');
         });
     });
   }

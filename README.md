@@ -26,9 +26,10 @@ jekyll serve                   # im Repo-Root, dann http://localhost:4000
 
 ## Design-System
 
-Die Design-Tokens stammen aus dem in Claude gebauten Designsystem „Performatic Intelligence“
-und werden von dort ins Repo übernommen (`tokens.css`). Quelle der Wahrheit ist das Designsystem;
-Änderungen an den Tokens dort vornehmen und dann übernehmen.
+Das Design wird primär in Claude Design gebaut und angepasst (Designsystem „Performatic Intelligence“)
+und danach ins Repo übertragen (`tokens.css`), damit die Definitionen von dort automatisch und
+dynamisch live gehen können. Quelle der Wahrheit ist Claude Design; Änderungen an den Tokens dort
+vornehmen und dann übertragen.
 
 ## Pflege
 
