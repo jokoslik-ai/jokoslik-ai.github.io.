@@ -18,10 +18,10 @@ Alle Dateien sind SVG, Farben aus dem Industry-Design-System.
 Papier      #f2f2f3
 Anthrazit   #2b2b2d
 Tinte       #1d1f20
-Akzent      #5980a6
-Akzent 700  #416180
-Akzent 400  #94bce3
-Akzent 300  #b5d9fd
+Akzent      #3273bd
+Akzent 700  #295d99
+Akzent 400  #7eaadd
+Akzent 300  #b2cdeb
 Neutral 500 #98989b
 Neutral 700 #5d5d60
 Neutral 100 #f5f5f8

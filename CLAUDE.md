@@ -177,6 +177,13 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 ✓/!, Marke 2c im Header. Die folgenden Detailangaben zu Farben/Schriften/Radius sind teils
 überholt; maßgeblich sind `tokens.css` und das Designsystem.
 
+**Akzent-Update (Variante A, kräftigeres Blau):** Akzent-Rampe 100–900 in `tokens.css` neu
+(`accent-700` = `#295d99`, Farbton 212°). Neu: Blueprint-Plusraster im Hero (`.hero::before`),
+hervorgehobenes Wort in der Hero-Überschrift (`.hl`), Kontaktband in `accent-700`
+(`.band-accent`), Hover-Rahmen auf Karten/FAQ, `.section-alt` (Abschnitt auf `color-surface`),
+Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
+(C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
+
 **Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
