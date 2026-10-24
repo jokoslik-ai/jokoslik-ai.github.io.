@@ -140,7 +140,7 @@ select.input {
 /* Blueprint-Raster: Pluszeichen im 32px-Raster (space-8), nach unten ausgeblendet */
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M12 16h8M16 12v8' stroke='%231d1f20' stroke-opacity='.22' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M12 16h8M16 12v8' stroke='%231d1f20' stroke-opacity='.14' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-size: 32px 32px;
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
@@ -355,6 +355,6 @@ select.input {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hero::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M12 16h8M16 12v8' stroke='%23f2f2f3' stroke-opacity='.22' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); }
+  .hero::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M12 16h8M16 12v8' stroke='%23f2f2f3' stroke-opacity='.14' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); }
   select.input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23f2f2f3' stroke-width='1.6'/%3E%3C/svg%3E"); }
 }
