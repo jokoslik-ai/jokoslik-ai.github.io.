@@ -130,7 +130,10 @@ leistung-betreuung.html
                    Detailseite Betreuung (ab 249 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (799 €)
-styles.css         Gesamtes Styling, Design-Tokens, alle Komponenten
+tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
+                   Schatten) – Quelle ist das Designsystem "Performatic Intelligence"
+styles.css         Komponenten und Layout, nutzt nur Tokens aus tokens.css
+fonts/             Barlow-Schriften (woff2) + OFL.txt
 script.js          Mobile-Nav-Toggle, Formspree-Submit-Handling
 impressum.html     Impressum – **Anschrift ist aktuell nur "Deutschland" (keine
                    Straße), Telefonnummer ist Platzhalter, kein Umsatzsteuer-
@@ -160,13 +163,19 @@ logo/              Logo-Varianten (2c/3a, Lockup/Mark, hell/dunkel) + OG-Bild
 README.md          Ursprüngliche Kurzanleitung (aus erster Version, ggf. veraltet)
 ```
 
-**Achtung – kaputte Font-Einbindung:** `styles.css` und die HTML-Seiten referenzieren
-`fonts/barlow-400-latin.woff2` und `fonts/barlow-condensed-600-latin.woff2`
-(`@font-face`, `<link rel="preload">`), aber es gibt **keinen `fonts/`-Ordner im Repo**
-(auch nicht in der Git-Historie) – die Font-Dateien fehlen komplett, die Links sind
-aktuell 404. Muss noch behoben werden (Dateien ergänzen oder Fallback-Stack anpassen).
+**Schriften:** `fonts/` enthält vier selbst gehostete `woff2`-Dateien (Barlow 400/500,
+Barlow Condensed 600/700, aus github.com/jpt/barlow, SIL OFL 1.1, Lizenztext `fonts/OFL.txt`).
+`@font-face` steht in `tokens.css`. Kein Google-Fonts-CDN.
 
 ## 5. Design-System
+
+**Stand 2026-10-24:** Tokens liegen in `tokens.css` (Hell = Standard, Dunkel per
+`prefers-color-scheme`; Kontrastflächen `.band-dark`/`.band-accent`/`.phase-banner` bleiben
+immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
+(`color-text-secondary`/`-tertiary`), 8 Schriftgrößen (`--fs-xs`…`--fs-4xl`), Abstandsraster
+4/8px (`--space-*`), ein Radius 4px auch für Karten, globaler Fokus-Ring, Statusmeldungen mit
+✓/!, Marke 2c im Header. Die folgenden Detailangaben zu Farben/Schriften/Radius sind teils
+überholt; maßgeblich sind `tokens.css` und das Designsystem.
 
 **Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
@@ -243,9 +252,7 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 
 ## 7. Offene / nächste Schritte
 
-- [ ] **Fonts fehlen im Repo**: `fonts/barlow-400-latin.woff2` und
-      `fonts/barlow-condensed-600-latin.woff2` werden referenziert, existieren aber nicht
-      (auch nicht in der Git-Historie) → aktuell 404, Fallback-Font wird geladen
+- [x] Fonts ergänzt (`fonts/`, siehe Abschnitt 4)
 - [ ] **Impressum unvollständig/fehlerhaft**: Anschrift fehlt (nur "Deutschland" steht da),
       Telefonnummer ist Platzhalter, kein Umsatzsteuer-ID-Abschnitt vorhanden, und Zeile 55
       hat eine überzählige schließende Klammer ("Anschrift wie oben]")
