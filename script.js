@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       var data = new FormData(form);
+      // Mehrfachauswahl "Aktive Kanäle" als ein Feld übertragen
+      var kanaele = data.getAll('kanaele');
+      if (kanaele.length) data.set('kanaele', kanaele.join(', '));
 
       fetch(form.action, {
         method: 'POST',

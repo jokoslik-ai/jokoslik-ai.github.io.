@@ -13,24 +13,38 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 
 **Funnel-Logik (3 Stufen + Einstiegsangebot):**
 
-1. **Account-Audit** – kostenlos, vier Module (Tracking & Datenqualität, Kontostruktur & Kanalwahl,
+1. **Account-Audit** – kostenlos, vier Prüfbereiche (Tracking & Datenqualität, Kontostruktur & Kanalwahl,
    Zielgruppen-Match, Steuerung & Skalierbarkeit) mit je 5 Unterpunkten à max. 5 Punkten, Ergebnis
-   als Score 0–100. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
+   als Score 0–100. Deckt Google Ads, Microsoft Ads und Meta Ads ab. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
    `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
    nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
 2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
    klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
    Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
-3. **Betreuung** – 249 € / Monat. Laufende Optimierung, monatlicher Review, monatlich kündbar.
+3. **Betreuung** – ab 249 € / Monat, Preis nach Aufwand (je nach betreuten Kanälen/Modulen).
+   Laufende Optimierung, monatlicher Review, monatlich kündbar.
 4. **Starter-Begleitung** – 799 € einmalig. Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
    Grund auf, Schritt für Schritt erklärt.
+
+**Begriffe:** Die vier Stufen oben = "Zusammenarbeit & Preise" (das *Wie*). Die inhaltlichen
+Leistungen = **sechs Module** (das *Was*): 01 Search Ads (Google & Microsoft Ads), 02 Meta Ads,
+03 Google Analytics 4 Audit, 04 Google Tag Manager Audit, 05 Datenanbindung (Marketing-Tool-Daten
+mit GA4 verbinden, Shop/CRM, Offline-Conversions, Server-Side-Tagging), 06 Datenvisualisierung
+(Looker-Studio-Dashboard, KPI-Definitionen). Die vier Teile des Account-Audits heißen
+**Prüfbereiche** (nicht "Module"), um Verwechslung zu vermeiden – Ausnahme: das interne
+`audit-score-dashboard.html` nutzt noch "Modul".
+
+**Bedarfslogik:** Welche Module/Stufe passt, hängt von der Ausgangslage ab. Abgebildet in
+`leistungen.html#einstieg` ("Welcher Einstieg passt zu dir?": kein Setup → Starter-Begleitung;
+Kanäle laufen, Qualität unklar → Account-Audit/Tiefenaudit; Setup steht → Betreuung) und im
+Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierung).
 
 ## 2. Aktueller Geschäftsphase (Stand: Marktsondierung)
 
 - **Kein Gewerbe angemeldet.** Es wird bewusst nur das kostenlose Account-Audit angeboten,
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
-- Tiefenaudit (499 €), Betreuung (249 €/Monat) und Starter-Begleitung (799 €) werden auf der
+- Tiefenaudit (499 €), Betreuung (ab 249 €/Monat) und Starter-Begleitung (799 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
   "Jetzt kaufen", nur informativ).
@@ -38,8 +52,9 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
   weist Besucher explizit auf diesen Status hin.
 - **Wichtig für später:** Sobald die Bezahlangebote live gehen, müssen folgende Stellen
   angepasst werden:
-  - `phase-banner`-Text in `index.html`, `leistungen.html` und den vier `leistung-*.html`-Seiten
-  - `.soon` / `.soon-inline` Badges auf den Preis-Karten entfernen, CTA-Buttons einfügen
+  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sechs Seiten)
+  - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `_includes/preise.html`,
+    Einstiegs-Karten in `leistungen.html#einstieg`, `leistung-*.html`), CTA-Buttons einfügen
   - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
   - Impressum: Es fehlt aktuell noch komplett ein Umsatzsteuer-ID-Abschnitt (siehe
     Abschnitt 7, offener Punkt) – bei Gewerbeanmeldung ergänzen
@@ -48,11 +63,24 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 
 ## 3. Tech-Stack
 
-- **Reines statisches HTML/CSS/JS**, kein Build-Step, kein Framework, kein Backend.
+- **Statisches HTML/CSS/JS**, kein Framework, kein Backend. **Seit 2026-10-24 mit Jekyll-Includes:**
+  GitHub Pages baut die Seite mit Jekyll (eingebaut, keine eigene Action). Wiederkehrende Blöcke
+  liegen genau einmal in `_includes/` und werden per `{% include … %}` eingesetzt:
+  `header.html` (Phase-Banner + Kopfzeile; auf `index.html` mit `home=true`, sonst verlinken Logo/
+  FAQ auf `index.html#…`), `footer.html`, `module-karten.html` (Parameter `prefix`: Linkziel der
+  Modul-Karten), `preise.html` ("Zusammenarbeit & Preise"), `kontakt.html` (Kontaktformular).
+  **Änderungen an diesen Blöcken nur in `_includes/` vornehmen.** Seiten mit Includes brauchen
+  Front Matter (`---`/`---` in den ersten zwei Zeilen); `impressum.html`, `datenschutz.html` und
+  `audit-score-dashboard.html` haben keins und werden unverändert kopiert. `_config.yml`
+  schließt die `.md`-Dateien (u. a. diese Datei) von der Veröffentlichung aus.
+  **Lokale Vorschau:** Doppelklick auf eine HTML-Datei zeigt nur die `{% include %}`-Platzhalter.
+  Stattdessen `gem install jekyll -v 3.10.0` (Version wie GitHub Pages) und `jekyll serve` im
+  Repo-Root, dann http://localhost:4000 öffnen.
 - Formular-Versand über **Formspree** (`https://formspree.io/f/xppzlnbe`, fest in
-  `index.html` und `leistungen.html` eingetragen). JS in `script.js` nutzt `fetch()` mit
+  `_includes/kontakt.html` eingetragen, eingebunden in `index.html` und `leistungen.html`). JS in `script.js` nutzt `fetch()` mit
   `FormData`-Body und `Accept: application/json`-Header gegen diesen Endpoint und zeigt
-  eine Inline-Statusmeldung anhand des HTTP-Status (`response.ok`) an.
+  eine Inline-Statusmeldung anhand des HTTP-Status (`response.ok`) an. Die Checkboxen
+  `kanaele` werden vor dem Senden zu einem kommagetrennten Feld zusammengefasst.
 - **Hosting: GitHub Pages mit Custom Domain `performatic-intelligence.de`** – `CNAME`-Datei
   liegt bereits im Repo-Root, `robots.txt` und `sitemap.xml` verweisen live auf die Domain.
   Domain ist also bereits gekauft/eingetragen (Registrar unbekannt). Ob die DNS-Records
@@ -83,12 +111,15 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 ## 4. Dateistruktur (Repo-Root, kein Unterordner)
 
 ```
-index.html        Startseite (Hero, Leistungen-Teaser, Messgrundlage-Argument,
-                   Preise, Kontaktformular, FAQ)
-leistungen.html    Übersichtsseite aller Leistungen (Google Ads, Meta Ads,
-                   Datenanbindung, GA4-/GTM-Audit, Starter-Begleitung, Preise
-                   im Überblick, eigenes Kontaktformular) mit Links auf die
-                   vier Detailseiten unten
+index.html        Startseite (Hero einspaltig, 6 Modul-Karten, Messgrundlage-Argument,
+                   Zusammenarbeit & Preise, Kontaktformular, FAQ)
+leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verlinken
+                   auf die Detailblöcke #search-ads, #meta-ads, #ga4-audit,
+                   #gtm-audit, #datenanbindung, #datenvisualisierung), darunter
+                   "Welcher Einstieg passt zu dir?" (#einstieg), dann
+                   "Zusammenarbeit & Preise" (#preise) und Kontaktformular –
+                   Module, Preise und Formular kommen aus `_includes/` und sind
+                   damit automatisch identisch mit index.html
 leistung-account-audit.html
                    Detailseite Account-Audit (kostenlos)
 leistung-audit.html
@@ -96,7 +127,7 @@ leistung-audit.html
                    auf "audit" belassen (nur der angezeigte Produktname wurde zu
                    "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
-                   Detailseite Betreuung (249 €/Monat)
+                   Detailseite Betreuung (ab 249 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (799 €)
 tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
@@ -114,6 +145,9 @@ audit-score-dashboard.html
                    Internes Tool (nicht verlinkt): berechnet den Account-Audit-Score aus
                    Checkboxen (4 Module × 5 Unterpunkte × max. 5 Punkte = 100), Donut-Chart-
                    Visualisierung pro Modul, eigenständig/offline nutzbar
+_includes/          Gemeinsame Blöcke (header, footer, module-karten, preise,
+                   kontakt) – siehe Abschnitt 3
+_config.yml        Jekyll-Konfiguration (schließt .md-Dateien vom Build aus)
 favicon.svg        Favicon
 robots.txt         Verweist auf sitemap.xml unter der Live-Domain
 sitemap.xml        Listet alle acht öffentlichen Seiten (index, leistungen, die vier
@@ -133,7 +167,7 @@ README.md          Ursprüngliche Kurzanleitung (aus erster Version, ggf. veralt
 Barlow Condensed 600/700, aus github.com/jpt/barlow, SIL OFL 1.1, Lizenztext `fonts/OFL.txt`).
 `@font-face` steht in `tokens.css`. Kein Google-Fonts-CDN.
 
-## 5. Design-System ("Blueprint"-Ästhetik, Variante "1a")
+## 5. Design-System
 
 **Stand 2026-10-24:** Tokens liegen in `tokens.css` (Hell = Standard, Dunkel per
 `prefers-color-scheme`; Kontrastflächen `.band-dark`/`.band-accent`/`.phase-banner` bleiben
@@ -142,6 +176,20 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 4/8px (`--space-*`), ein Radius 4px auch für Karten, globaler Fokus-Ring, Statusmeldungen mit
 ✓/!, Marke 2c im Header. Die folgenden Detailangaben zu Farben/Schriften/Radius sind teils
 überholt; maßgeblich sind `tokens.css` und das Designsystem.
+
+**Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
+entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
+(ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
+Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
+Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): Einleitungstext steht
+über dem Formular (`.kontakt-stack`), Formular in voller Breite, mobil 1 Spalte, ab Tablet
+2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
+auf Desktop) und eigenem SVG-Pfeil. **Begründung:** Der Großteil des Traffics und der
+Anfragen wird über Mobilgeräte erwartet. Hinweis: Große Teile des bestehenden `styles.css`
+sind noch desktop-first (`max-width`-Queries) geschrieben; bei Überarbeitungen schrittweise
+umstellen.
+
+**Stil:** "Blueprint"-Ästhetik, Variante "1a".
 
 Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Marke
 "Performatic Intelligence" umgetextet.
@@ -153,12 +201,14 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   600), beide lokal als `.woff2` eingebunden – **bewusst kein Google-Fonts-CDN**, aus
   Datenschutzgründen (IP-Übertragung an Google beim Seitenaufruf).
 - **Signature-Komponente:** `.blueprint` – dünner Rahmen ("Konstruktionsplan"-Look), wird auf
-  Karten (`.bp-card`), dem Hero-Datenblatt (`.datasheet`) und dem Starter-Callout
-  (`.starter-card`) verwendet. Die ursprünglichen Eckmarkierungen (`.corner`, ein
+  Karten (`.bp-card`) verwendet. Das frühere Hero-Datenblatt (`.datasheet`) wurde
+  2026-10-24 entfernt (Hero ist jetzt einspaltig). Die ursprünglichen Eckmarkierungen (`.corner`, ein
   Plus-Symbol an jeder Ecke) wurden entfernt, nur der Rahmen ist geblieben.
 - **Layout-Bausteine:** `.section`, `.card-grid` (4er/3er-Raster), `.band-dark` /
   `.band-accent` (Kontrastbänder für Messgrundlage-Argument bzw. Kontaktformular),
-  `.leistung-block` / `.tier-block` (für die Leistungsseiten).
+  `.leistung-block` (Detailblöcke auf `leistungen.html`), `.bp-card .card-link` (Textlink in
+  Karten), `.bp-card .soon` ("In Kürze verfügbar"-Badge auf Karten), `.checkbox-group`
+  (Checkboxen im Formular). `.tier-block` wurde entfernt (Preise jetzt als Karten).
 - Responsive Breakpoints bei 900px und 720px (Mobile-Nav wird zum Hamburger-Menü).
 - **Navigation:** Hauptmenü hat einen "Leistungen"-Dropdown (`.nav-dropdown`) mit Links auf
   die vier `leistung-*.html`-Detailseiten (jeweils mit Preis-Tag) plus "Alle Leistungen

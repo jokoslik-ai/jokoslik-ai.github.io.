@@ -1,0 +1,8 @@
+# GitHub Pages baut die Seite mit Jekyll. Wiederkehrende Blöcke (Header, Footer,
+# Module, Preise, Kontaktformular) liegen einmalig in _includes/ und werden per
+# {% include %} in die Seiten mit Front Matter (---) eingesetzt.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - images/README.md
+  - logo/README.md

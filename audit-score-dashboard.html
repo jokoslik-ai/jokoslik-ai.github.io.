@@ -120,7 +120,7 @@ label.check .check-w { flex: 0 0 auto; font-size: 11.5px; color: var(--color-mut
 
   <header class="page-head">
     <h1>Account-Audit – Score Dashboard</h1>
-    <p>Interne Auswertungshilfe für das kostenlose Account-Audit. Anhaken, was im jeweiligen Google-/Meta-Konto zutrifft – der Score (0–100) berechnet sich automatisch, pro Modul aufgeschlüsselt. Rein clientseitig, keine Daten verlassen diesen Browser.</p>
+    <p>Interne Auswertungshilfe für das kostenlose Account-Audit. Anhaken, was im jeweiligen Google-/Microsoft-/Meta-Konto zutrifft – der Score (0–100) berechnet sich automatisch, pro Modul aufgeschlüsselt. Rein clientseitig, keine Daten verlassen diesen Browser.</p>
   </header>
 
   <div class="layout">
@@ -153,7 +153,7 @@ const MODULES = [
         { label: 'Wichtige Events (Seitenaufruf, Scroll, Klicks) werden sauber erfasst', weight: 3 },
       ]},
       { title: 'Conversion-Tracking auf Werbeplattformen', items: [
-        { label: 'Conversion-Tracking bei mind. einer Plattform (Google Ads oder Meta) eingerichtet', weight: 2 },
+        { label: 'Conversion-Tracking bei mind. einer Plattform (Google Ads, Microsoft Ads oder Meta) eingerichtet', weight: 2 },
         { label: 'Serverseitiges Tracking (Conversions API / Enhanced Conversions) ergänzt das clientseitige Tracking', weight: 3 },
       ]},
       { title: 'E-Commerce-Event-Tiefe', items: [
@@ -175,7 +175,7 @@ const MODULES = [
     id: 'kanal', name: 'Kontostruktur & Kanalwahl', color: '#7f9d84',
     subpoints: [
       { title: 'Kanal-Mix', items: [
-        { label: 'Die genutzten Kanäle (Google/Meta/weitere) passen nachvollziehbar zu Zielgruppe und Produkt', weight: 3 },
+        { label: 'Die genutzten Kanäle (Google/Microsoft/Meta/weitere) passen nachvollziehbar zu Zielgruppe und Produkt', weight: 3 },
         { label: 'Es gibt eine bewusste Entscheidung gegen ungeeignete Kanäle (nicht „wir sind überall“)', weight: 2 },
       ]},
       { title: 'Kampagnenstruktur', items: [
