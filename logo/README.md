@@ -10,7 +10,7 @@ Alle Dateien sind SVG, Farben aus dem Industry-Design-System.
 | logo-3a-lockup-light.svg | 3a Balken im Passerquadrat + Wortmarke, heller Grund |
 | logo-3a-lockup-dark.svg | 3a auf Anthrazit |
 | logo-3a-mark-light.svg / -dark.svg | quadratische Bildmarke |
-| favicon-3a.svg | Favicon (identisch zu logo-3a-mark-dark) |
+| ../favicon.svg | Favicon (liegt im Repo-Root, nicht in diesem Ordner) |
 
 ## Farben
 
@@ -61,7 +61,7 @@ SVG + echter Text, Snippet unten) oder die Textpfade einmalig in Kurven umwandel
 
 ```html
 <img src="logo-3a-lockup-light.svg" alt="Performatic Intelligence" height="64">
-<link rel="icon" type="image/svg+xml" href="favicon-3a.svg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 ```
 
 Mindestgröße der Bildmarke: 22 px. Schutzraum: eine Balkenbreite auf allen Seiten.

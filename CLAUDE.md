@@ -169,6 +169,9 @@ Barlow Condensed 600/700, aus github.com/jpt/barlow, SIL OFL 1.1, Lizenztext `fo
 
 ## 5. Design-System
 
+**Quelle:** Das Designsystem "Performatic Intelligence" wurde in Claude gebaut; `tokens.css` wird von dort ins
+Repo übernommen. Änderungen an Tokens zuerst im Designsystem vornehmen.
+
 **Stand 2026-10-24:** Tokens liegen in `tokens.css` (Hell = Standard, Dunkel per
 `prefers-color-scheme`; Kontrastflächen `.band-dark`/`.band-accent`/`.phase-banner` bleiben
 immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
