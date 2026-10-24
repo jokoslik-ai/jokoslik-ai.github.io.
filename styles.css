@@ -359,3 +359,17 @@ select.input {
   }
   body.has-cta-bar { padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* — Vorstellung / Für wen (Startseite) — */
+.intro-grid { display: grid; gap: var(--space-8); grid-template-columns: 1fr; }
+.intro-text h2 { font-size: var(--fs-2xl); margin: 0 0 var(--space-4); }
+.intro-text p { font-size: var(--fs-lg); line-height: 1.6; color: var(--color-text-secondary); max-width: 52ch; margin: 0 0 var(--space-3); }
+.who { padding: var(--space-6); background: var(--color-bg); }
+.who h3 { font-size: var(--fs-xl); margin: 0 0 var(--space-3); }
+.who ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.who li { position: relative; padding-left: 26px; font-size: var(--fs-sm); color: var(--color-text-secondary); }
+.who li::before { content: "✓"; position: absolute; left: 0; color: var(--color-accent-700); font-weight: 700; }
+.who li strong { color: var(--color-text); }
+@media (min-width: 901px) {
+  .intro-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; gap: var(--space-12); }
+}
