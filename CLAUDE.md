@@ -178,8 +178,7 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 überholt; maßgeblich sind `tokens.css` und das Designsystem.
 
 **Akzent-Update (Variante A, kräftigeres Blau):** Akzent-Rampe 100–900 in `tokens.css` neu
-(`accent-700` = `#295d99`, Farbton 212°). Neu: Blueprint-Plusraster im Hero (`.hero::before`),
-hervorgehobenes Wort in der Hero-Überschrift (`.hl`), Kontaktband in `accent-700`
+(`accent-700` = `#295d99`, Farbton 212°). Neu: hervorgehobenes Wort in der Hero-Überschrift (`.hl`), Kontaktband in `accent-700`
 (`.band-accent`), Hover-Rahmen auf Karten/FAQ, `.section-alt` (Abschnitt auf `color-surface`),
 Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
 (C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
