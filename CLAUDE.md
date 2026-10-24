@@ -15,7 +15,7 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 
 1. **Account-Audit** – kostenlos, vier Prüfbereiche (Tracking & Datenqualität, Kontostruktur & Kanalwahl,
    Zielgruppen-Match, Steuerung & Skalierbarkeit) mit je 5 Unterpunkten à max. 5 Punkten, Ergebnis
-   als Score 0–100. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
+   als Score 0–100. Deckt Google Ads, Microsoft Ads und Meta Ads ab. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
    `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
    nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
 2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
@@ -115,7 +115,7 @@ leistung-audit.html
                    auf "audit" belassen (nur der angezeigte Produktname wurde zu
                    "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
-                   Detailseite Betreuung (249 €/Monat)
+                   Detailseite Betreuung (ab 249 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (799 €)
 styles.css         Gesamtes Styling, Design-Tokens, alle Komponenten
@@ -157,11 +157,12 @@ aktuell 404. Muss noch behoben werden (Dateien ergänzen oder Fallback-Stack anp
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
 Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
-Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). *(Begründung für Mobile First wurde noch nicht
-festgehalten – bei Gelegenheit ergänzen.)* Hinweis: Große Teile des bestehenden `styles.css`
+Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). **Begründung:** Der Großteil des Traffics und der
+Anfragen wird über Mobilgeräte erwartet. Hinweis: Große Teile des bestehenden `styles.css`
 sind noch desktop-first (`max-width`-Queries) geschrieben; bei Überarbeitungen schrittweise
 umstellen.
- ("Blueprint"-Ästhetik, Variante "1a")
+
+**Stil:** "Blueprint"-Ästhetik, Variante "1a".
 
 Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Marke
 "Performatic Intelligence" umgetextet.
@@ -245,8 +246,6 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       `performatic-intelligence.de` liegt zwar schon im Repo, aber ob die DNS-Records beim
       Registrar und die Pages-Settings selbst korrekt gesetzt sind, ist von hier aus nicht
       einsehbar (siehe Abschnitt 3)
-- [ ] Klären, ob das kostenlose Account-Audit auch Microsoft Ads abdeckt (Texte und
-      `audit-score-dashboard.html` sind aktuell auf Google + Meta ausgelegt)
 - [x] `sitemap.xml` aktualisiert (2026-09-07): enthält jetzt alle acht öffentlichen Seiten
       inkl. der vier `leistung-*.html`-Detailseiten; `audit-score-dashboard.html` bewusst
       weiterhin ausgeschlossen
