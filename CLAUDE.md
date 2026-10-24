@@ -111,7 +111,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 ## 4. Dateistruktur (Repo-Root, kein Unterordner)
 
 ```
-index.html        Startseite (Hero einspaltig, 6 Modul-Karten, Messgrundlage-Argument,
+index.html        Startseite (Hero einspaltig, Vorstellung/"Für wen" (`#ueber`), 6 Modul-Karten, Messgrundlage-Argument,
                    Zusammenarbeit & Preise, Kontaktformular, FAQ)
 leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verlinken
                    auf die Detailblöcke #search-ads, #meta-ads, #ga4-audit,
@@ -182,6 +182,19 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 (`.band-accent`), Hover-Rahmen auf Karten/FAQ, `.section-alt` (Abschnitt auf `color-surface`),
 Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
 (C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
+
+**Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
+KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
+Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
+der Startseite (Variante A: Text + Karte "Für wen ist das?"). Hero-Text, Meta-Beschreibung und
+Fußzeile nennen noch "kleine und mittlere Unternehmen" und sind noch nicht angeglichen.
+
+**Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die sechs Modul-Karten (`_includes/module-karten.html`)
+haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG, `currentColor`). Das Messgrundlage-Band ist
+`.band-dark.band-blue` (`accent-800`), damit es sich in Hell und Dunkel von Fläche und Preisen abhebt;
+Beschriftungen und Texte darin einheitlich (`accent-300` / `neutral-100`, Barlow 15px). Auf
+`leistungen.html` liegen die Modul-Karten (`section-alt`) und die Detailblöcke (`#details`) in getrennten
+Abschnitten mit unterschiedlichem Hintergrund.
 
 **Handy-Leiste und Score-Grafik:** `.cta-bar` (in `_includes/footer.html`, Logik in `script.js`)
 ist nur ≤720px sichtbar und wird ausgeblendet, solange `.hero-actions`, `.product-cta-band`,

@@ -359,3 +359,32 @@ select.input {
   }
   body.has-cta-bar { padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* — Vorstellung / Für wen (Startseite) — */
+.intro-grid { display: grid; gap: var(--space-8); grid-template-columns: 1fr; }
+.intro-text h2 { font-size: var(--fs-2xl); margin: 0 0 var(--space-4); }
+.intro-text p { font-size: var(--fs-lg); line-height: 1.6; color: var(--color-text-secondary); max-width: 52ch; margin: 0 0 var(--space-3); }
+.who { padding: var(--space-6); }
+.who h3 { font-size: var(--fs-xl); margin: 0 0 var(--space-3); }
+.who ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.who li { position: relative; padding-left: 26px; font-size: var(--fs-sm); color: var(--color-text-secondary); }
+.who li::before { content: "✓"; position: absolute; left: 0; color: var(--color-accent-700); font-weight: 700; }
+.who li strong { color: var(--color-text); }
+#ueber { padding-top: 0; }
+@media (min-width: 721px) {
+  .intro-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: var(--space-8); }
+}
+@media (min-width: 901px) {
+  .intro-grid { gap: var(--space-12); }
+}
+
+/* — Messgrundlage-Band in Blau: hebt sich in beiden Modi von Fläche und Preisen ab — */
+.band-dark.band-blue { background: var(--color-accent-800); }
+.band-blue .eyebrow, .band-blue .band-compare .lbl { color: var(--color-accent-300); }
+.band-blue h2 { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-base); line-height: 1.55; letter-spacing: normal; margin: 0; color: var(--color-neutral-100); }
+.band-blue .band-compare .old div.txt, .band-blue .band-compare .new div.txt { color: var(--color-neutral-100); font-family: var(--font-body); font-size: var(--fs-base); line-height: 1.55; }
+.band-blue .band-compare .old .lbl, .band-blue .band-compare .new .lbl { color: var(--color-accent-300); }
+
+/* — Piktogramme auf den Modul-Karten — */
+.card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-1); }
+.bp-card .ico { width: 48px; height: 48px; padding: var(--space-3); box-sizing: border-box; border-radius: var(--radius-md); background: var(--color-accent-100); color: var(--color-accent-700); flex: none; }
