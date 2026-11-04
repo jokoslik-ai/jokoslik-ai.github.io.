@@ -130,6 +130,8 @@ leistung-betreuung.html
                    Detailseite Betreuung (ab 249 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (799 €)
+ueber-mich.html    "Über mich" (Nav-Punkt): Werdegang, Kompetenzen; Default-Text, mit
+                   `TODO Jonas`-Kommentaren für noch fehlende Inhalte (Foto, Jahreszahlen)
 tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
                    Schatten) – Quelle ist das Designsystem "Performatic Intelligence"
 styles.css         Komponenten und Layout, nutzt nur Tokens aus tokens.css
