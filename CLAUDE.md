@@ -192,7 +192,9 @@ Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neu
 leisten: Hook-Fragen, drei Ziele (Bekanntheit & Reichweite, Leads, Umsatz – "Mitarbeiter finden" bewusst
 nicht, da kein Recruiting-Angebot), Interessenkonflikt Plattform-KI vs. Kundenziele. Das frühere
 Messgrundlage-Band ist darin als dritte Zeile aufgegangen. Über mich: Foto `images/jonas.webp`
-(freigestellt), drei Werte (`#werte`). Kontaktformular: Budget-Option "Noch offen".
+(freigestellt, rechts neben dem Intro in Texthöhe), drei Werte (`#werte`), "Auf einen Blick" mit dem Werdegang
+zusammengelegt (`#werdegang`, Zeitleiste + Fakten). Hook-Fragen mit Piktogrammen (`.hook-list--icons`; Alternativen
+`--nums`/`--check` stehen in `styles.css`). Kontaktformular: Budget-Option "Noch offen".
 
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
