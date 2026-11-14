@@ -18,13 +18,13 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
    als Score 0–100. Deckt Google Ads, Microsoft Ads und Meta Ads ab. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
    `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
    nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
-2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
+2. **Tiefenaudit** – 699 € einmalig (bis 2026-11-14: 499 €) (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
    klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
    Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
 3. **Betreuung** – ab 499 € / Monat (bis 2026-11-14: ab 249 €), individueller Preis nach Umfang (v. a. Anzahl
    Kanäle und Länder). Fester monatlicher Review-Termin, sonst Abstimmung nach Absprache.
    Laufende Optimierung, monatlicher Review, monatlich kündbar.
-4. **Starter-Begleitung** – 799 € einmalig, drei feste Termine (Kennenlernen & Ziele, Zwischenstand &
+4. **Starter-Begleitung** – 899 € einmalig (bis 2026-11-14: 799 €), drei feste Termine (Kennenlernen & Ziele, Zwischenstand &
    Optionen, Go-Live). Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
    Grund auf, Schritt für Schritt erklärt.
@@ -49,7 +49,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
 - Account-Audit: Lesezugriff bevorzugt (Screenshots als Notlösung), Ergebnis als PDF. Tiefenaudit enthält
   GA- und GTM-Audit, keine feste Dauer. Detailseiten haben je: Für wen, Leistungsumfang, Ablauf, FAQ.
-- Tiefenaudit (499 €), Betreuung (ab 499 €/Monat) und Starter-Begleitung (799 €) werden auf der
+- Tiefenaudit (699 €), Betreuung (ab 499 €/Monat) und Starter-Begleitung (899 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
   "Jetzt kaufen", nur informativ).
@@ -129,13 +129,13 @@ leistungen.html    Übersicht: dieselben 7 Modul-Karten wie die Startseite (verl
 leistung-account-audit.html
                    Detailseite Account-Audit (kostenlos)
 leistung-audit.html
-                   Detailseite Tiefenaudit (499 €) – Dateiname bewusst unverändert
+                   Detailseite Tiefenaudit (699 €) – Dateiname bewusst unverändert
                    auf "audit" belassen (nur der angezeigte Produktname wurde zu
                    "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
                    Detailseite Betreuung (ab 499 €/Monat)
 leistung-starter-begleitung.html
-                   Detailseite Starter-Begleitung (799 €)
+                   Detailseite Starter-Begleitung (899 €)
 ueber-mich.html    "Über mich" (Nav-Punkt): Werdegang, Kompetenzen; Default-Text, mit
                    `TODO Jonas`-Kommentaren für noch fehlende Inhalte (Foto, Jahreszahlen)
 tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
@@ -320,6 +320,6 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       (siehe Abschnitt 2)
 - [ ] `Konzept-Performatic.md` (separates Dokument, außerhalb dieses Ordners) ist noch auf
       dem alten Markennamen "Performatic" und alten Preisen (690 €/490–1290 €) – bei Bedarf
-      auf "Performatic Intelligence" und aktuelle Preise (499 €/ab 499 €/799 €) aktualisieren
+      auf "Performatic Intelligence" und aktuelle Preise (699 €/ab 499 €/899 €) aktualisieren
 - [ ] Optional: echte Case-Study-Zahlen für einen "Ergebnisse"-Abschnitt sammeln, sobald
       erste Kunden/Ergebnisse vorliegen (siehe Abschnitt 6)
