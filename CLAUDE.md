@@ -21,9 +21,11 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
    klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
    Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
-3. **Betreuung** – ab 499 € / Monat (bis 2026-11-14: ab 249 €), Preis nach Aufwand (je nach betreuten Kanälen/Modulen).
+3. **Betreuung** – ab 499 € / Monat (bis 2026-11-14: ab 249 €), individueller Preis nach Umfang (v. a. Anzahl
+   Kanäle und Länder). Fester monatlicher Review-Termin, sonst Abstimmung nach Absprache.
    Laufende Optimierung, monatlicher Review, monatlich kündbar.
-4. **Starter-Begleitung** – 799 € einmalig. Hand-Holding-Angebot für Unternehmen ohne
+4. **Starter-Begleitung** – 799 € einmalig, drei feste Termine (Kennenlernen & Ziele, Zwischenstand &
+   Optionen, Go-Live). Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
    Grund auf, Schritt für Schritt erklärt.
 
@@ -45,6 +47,8 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 
 - **Kein Gewerbe angemeldet.** Es wird bewusst nur das kostenlose Account-Audit angeboten,
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
+- Account-Audit: Lesezugriff bevorzugt (Screenshots als Notlösung), Ergebnis als PDF. Tiefenaudit enthält
+  GA- und GTM-Audit, keine feste Dauer. Detailseiten haben je: Für wen, Leistungsumfang, Ablauf, FAQ.
 - Tiefenaudit (499 €), Betreuung (ab 499 €/Monat) und Starter-Begleitung (799 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
