@@ -57,7 +57,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   weist Besucher explizit auf diesen Status hin.
 - **Wichtig für später:** Sobald die Bezahlangebote live gehen, müssen folgende Stellen
   angepasst werden:
-  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sechs Seiten)
+  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sieben Seiten mit Header: index, leistungen, ueber-mich, vier `leistung-*.html`)
   - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `_includes/preise.html`,
     Einstiegs-Karten in `leistungen.html#einstieg`, `leistung-*.html`), CTA-Buttons einfügen
   - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
@@ -93,7 +93,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   sich aus dem Repo-Inhalt nicht prüfen – auf Wunsch A-Records auf
   `185.199.108.153/.109.153/.110.153/.111.153`, AAAA auf `2606:50c0:8000::153` usw. verwenden.
 - **Tracking/Consent:** Google Tag Manager (`GTM-TL4WCD8P`) + darüber Google Analytics 4
-  eingebunden (Snippet auf allen acht HTML-Seiten mit Content, siehe Abschnitt 4).
+  eingebunden (Snippet auf allen neun HTML-Seiten mit Content, siehe Abschnitt 4).
   Personalisierte Werbung/Google Signals ist
   aktiv, GA4-Datenaufbewahrung auf 14 Monate gestellt, AVV mit Google abgeschlossen.
   Einwilligung läuft über **Klaro** (Kiprotect, gehostete Config unter
@@ -103,7 +103,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   Die Kategorie "Werbung" ist in der Klaro-Config bei Kiprotect noch anzulegen (liegt
   außerhalb dieses Repos).
   Ein `gtag('consent','default', {...alle Typen: 'denied'})` steht als eigenständiges,
-  synchrones Inline-Script vor dem Klaro-Script in allen acht HTML-Seiten – wichtig, weil
+  synchrones Inline-Script vor dem Klaro-Script in allen neun HTML-Seiten – wichtig, weil
   Klaro selbst per `defer` geladen wird und sein "denied" sonst zu spät käme (per
   GTM-Debugger bestätigt: vorher feuerte ein `gtag`-Call ganz ohne Consent-State). Klaro
   ruft danach bei Zustimmung `gtag('consent','update', ...)` auf – laut Test funktioniert
@@ -136,8 +136,9 @@ leistung-betreuung.html
                    Detailseite Betreuung (ab 499 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (899 €)
-ueber-mich.html    "Über mich" (Nav-Punkt): Werdegang, Kompetenzen; Default-Text, mit
-                   `TODO Jonas`-Kommentaren für noch fehlende Inhalte (Foto, Jahreszahlen)
+ueber-mich.html    "Über mich" (Nav-Punkt): Intro mit Foto, Mein Weg, Werte (`#werte`), Kompetenzen,
+                   Haltung, Werdegang & auf einen Blick (`#werdegang`); `TODO Jonas`-Kommentare
+                   für noch fehlende Inhalte (Jahreszahlen, Zertifizierungen)
 tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
                    Schatten) – Quelle ist das Designsystem "Performatic Intelligence"
 styles.css         Komponenten und Layout, nutzt nur Tokens aus tokens.css
@@ -158,8 +159,8 @@ _includes/          Gemeinsame Blöcke (header, footer, module-karten, preise,
 _config.yml        Jekyll-Konfiguration (schließt .md-Dateien vom Build aus)
 favicon.svg        Favicon
 robots.txt         Verweist auf sitemap.xml unter der Live-Domain
-sitemap.xml        Listet alle acht öffentlichen Seiten (index, leistungen, die vier
-                   leistung-*.html-Detailseiten, impressum, datenschutz) mit
+sitemap.xml        Listet alle neun öffentlichen Seiten (index, leistungen, die vier
+                   leistung-*.html-Detailseiten, ueber-mich, impressum, datenschutz) mit
                    `lastmod` aus der Git-Historie. `audit-score-dashboard.html` ist
                    bewusst NICHT gelistet (siehe oben: nicht in der Hauptnavigation
                    verlinktes internes Tool, soll nicht indexiert werden)
@@ -203,11 +204,12 @@ zusammengelegt (`#werdegang`, Zeitleiste + Fakten). Hook-Fragen mit Piktogrammen
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
 Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
-der Startseite (Variante A: Text + Karte "Für wen ist das?"). Hero-Text, Meta-Beschreibung und
-Fußzeile nennen noch "kleine und mittlere Unternehmen" und sind noch nicht angeglichen.
+der Startseite (Text + Karte "Für wen ist das?"). Seit 2026-11-14 sind Hero-Text, Meta-Beschreibung,
+JSON-LD und Fußzeile angeglichen (Selbstständige, Einzelunternehmen, kleine Betriebe).
 
-**Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die sechs Modul-Karten (`_includes/module-karten.html`)
-haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG, `currentColor`). Das Messgrundlage-Band ist
+**Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die Modul-Karten (`_includes/module-karten.html`,
+seit 2026-11-14 sieben inkl. Nutzen-Zeile `.card-claim`) haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG,
+`currentColor`). Das blaue Band (früher Messgrundlage, seit 2026-11-14 Plattform-Unabhängigkeit) ist
 `.band-dark.band-blue` (`accent-800`), damit es sich in Hell und Dunkel von Fläche und Preisen abhebt;
 Beschriftungen und Texte darin einheitlich (`accent-300` / `neutral-100`, Barlow 15px). Auf
 `leistungen.html` liegen die Modul-Karten (`section-alt`) und die Detailblöcke (`#details`) in getrennten
@@ -282,7 +284,7 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   Google Signals) sind eingebunden, Einwilligung läuft über Klaro mit drei getrennten
   Kategorien ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und Werbung
   sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Das `default denied`-
-  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen acht HTML-Seiten),
+  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen neun HTML-Seiten),
   `gtag('consent','update',...)` durch Klaro wurde per GTM-Debugger als funktionierend
   bestätigt. Offen bleibt nur noch, in der Kiprotect-Klaro-Config die Kategorie "Werbung"
   anzulegen und in GTM selbst die Consent Settings pro Tag zu aktivieren (beides außerhalb
@@ -313,8 +315,8 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       `performatic-intelligence.de` liegt zwar schon im Repo, aber ob die DNS-Records beim
       Registrar und die Pages-Settings selbst korrekt gesetzt sind, ist von hier aus nicht
       einsehbar (siehe Abschnitt 3)
-- [x] `sitemap.xml` aktualisiert (2026-09-07): enthält jetzt alle acht öffentlichen Seiten
-      inkl. der vier `leistung-*.html`-Detailseiten; `audit-score-dashboard.html` bewusst
+- [x] `sitemap.xml` aktualisiert (zuletzt 2026-11-14): enthält alle neun öffentlichen Seiten
+      inkl. der vier `leistung-*.html`-Detailseiten und `ueber-mich.html`; `audit-score-dashboard.html` bewusst
       weiterhin ausgeschlossen
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
       (siehe Abschnitt 2)
