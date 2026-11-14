@@ -18,20 +18,23 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
    als Score 0–100. Deckt Google Ads, Microsoft Ads und Meta Ads ab. Dient als Lead-Magnet und Vertrauensaufbau. Internes Scoring-Tool dafür:
    `audit-score-dashboard.html` (Checkbox-basiertes Punktesystem, Donut-Visualisierung, lokal
    nutzbar, bewusst nicht in der Hauptnavigation verlinkt).
-2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
+2. **Tiefenaudit** – 699 € einmalig (bis 2026-11-14: 499 €) (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
    klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
    Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
-3. **Betreuung** – ab 249 € / Monat, Preis nach Aufwand (je nach betreuten Kanälen/Modulen).
+3. **Betreuung** – ab 499 € / Monat (bis 2026-11-14: ab 249 €), individueller Preis nach Umfang (v. a. Anzahl
+   Kanäle und Länder). Fester monatlicher Review-Termin, sonst Abstimmung nach Absprache.
    Laufende Optimierung, monatlicher Review, monatlich kündbar.
-4. **Starter-Begleitung** – 799 € einmalig. Hand-Holding-Angebot für Unternehmen ohne
+4. **Starter-Begleitung** – 899 € einmalig (bis 2026-11-14: 799 €), drei feste Termine (Kennenlernen & Ziele, Zwischenstand &
+   Optionen, Go-Live). Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
    Grund auf, Schritt für Schritt erklärt.
 
 **Begriffe:** Die vier Stufen oben = "Zusammenarbeit & Preise" (das *Wie*). Die inhaltlichen
-Leistungen = **sechs Module** (das *Was*): 01 Search Ads (Google & Microsoft Ads), 02 Meta Ads,
+Leistungen = **sieben Module** (das *Was*): 01 Search Ads (Google & Microsoft Ads), 02 Meta Ads,
 03 Google Analytics 4 Audit, 04 Google Tag Manager Audit, 05 Datenanbindung (Marketing-Tool-Daten
 mit GA4 verbinden, Shop/CRM, Offline-Conversions, Server-Side-Tagging), 06 Datenvisualisierung
-(Looker-Studio-Dashboard, KPI-Definitionen). Die vier Teile des Account-Audits heißen
+(Looker-Studio-Dashboard, KPI-Definitionen), 07 Creative- & Content-Strategie (Analyse vorhandener
+Inhalte + Content-Plan, ausdrücklich **keine Produktion**; Anker `#content-strategie`). Die vier Teile des Account-Audits heißen
 **Prüfbereiche** (nicht "Module"), um Verwechslung zu vermeiden – Ausnahme: das interne
 `audit-score-dashboard.html` nutzt noch "Modul".
 
@@ -44,7 +47,9 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 
 - **Kein Gewerbe angemeldet.** Es wird bewusst nur das kostenlose Account-Audit angeboten,
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
-- Tiefenaudit (499 €), Betreuung (ab 249 €/Monat) und Starter-Begleitung (799 €) werden auf der
+- Account-Audit: Lesezugriff bevorzugt (Screenshots als Notlösung), Ergebnis als PDF. Tiefenaudit enthält
+  GA- und GTM-Audit, keine feste Dauer. Detailseiten haben je: Für wen, Leistungsumfang, Ablauf, FAQ.
+- Tiefenaudit (699 €), Betreuung (ab 499 €/Monat) und Starter-Begleitung (899 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
   "Jetzt kaufen", nur informativ).
@@ -52,7 +57,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   weist Besucher explizit auf diesen Status hin.
 - **Wichtig für später:** Sobald die Bezahlangebote live gehen, müssen folgende Stellen
   angepasst werden:
-  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sechs Seiten)
+  - `phase-banner`-Text in `_includes/header.html` (gilt für alle sieben Seiten mit Header: index, leistungen, ueber-mich, vier `leistung-*.html`)
   - `.soon` / `.soon-inline` Badges entfernen (Preis-Karten in `_includes/preise.html`,
     Einstiegs-Karten in `leistungen.html#einstieg`, `leistung-*.html`), CTA-Buttons einfügen
   - FAQ-Eintrag "Bietest du aktuell auch das Tiefenaudit oder eine Betreuung an?" anpassen/entfernen
@@ -88,7 +93,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   sich aus dem Repo-Inhalt nicht prüfen – auf Wunsch A-Records auf
   `185.199.108.153/.109.153/.110.153/.111.153`, AAAA auf `2606:50c0:8000::153` usw. verwenden.
 - **Tracking/Consent:** Google Tag Manager (`GTM-TL4WCD8P`) + darüber Google Analytics 4
-  eingebunden (Snippet auf allen acht HTML-Seiten mit Content, siehe Abschnitt 4).
+  eingebunden (Snippet auf allen neun HTML-Seiten mit Content, siehe Abschnitt 4).
   Personalisierte Werbung/Google Signals ist
   aktiv, GA4-Datenaufbewahrung auf 14 Monate gestellt, AVV mit Google abgeschlossen.
   Einwilligung läuft über **Klaro** (Kiprotect, gehostete Config unter
@@ -98,7 +103,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
   Die Kategorie "Werbung" ist in der Klaro-Config bei Kiprotect noch anzulegen (liegt
   außerhalb dieses Repos).
   Ein `gtag('consent','default', {...alle Typen: 'denied'})` steht als eigenständiges,
-  synchrones Inline-Script vor dem Klaro-Script in allen acht HTML-Seiten – wichtig, weil
+  synchrones Inline-Script vor dem Klaro-Script in allen neun HTML-Seiten – wichtig, weil
   Klaro selbst per `defer` geladen wird und sein "denied" sonst zu spät käme (per
   GTM-Debugger bestätigt: vorher feuerte ein `gtag`-Call ganz ohne Consent-State). Klaro
   ruft danach bei Zustimmung `gtag('consent','update', ...)` auf – laut Test funktioniert
@@ -111,9 +116,10 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 ## 4. Dateistruktur (Repo-Root, kein Unterordner)
 
 ```
-index.html        Startseite (Hero einspaltig, Vorstellung/"Für wen" (`#ueber`), 6 Modul-Karten, Messgrundlage-Argument,
+index.html        Startseite (Hero, Hook-Fragen + "Für wen" (`#ueber`), Ziele (`#ziele`), Plattform-Unabhängigkeit
+                   inkl. Messgrundlage (`.conflict-table`), 7 Modul-Karten, "So arbeite ich" (`#vorgehen`),
                    Zusammenarbeit & Preise, Kontaktformular, FAQ)
-leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verlinken
+leistungen.html    Übersicht: dieselben 7 Modul-Karten wie die Startseite (verlinken
                    auf die Detailblöcke #search-ads, #meta-ads, #ga4-audit,
                    #gtm-audit, #datenanbindung, #datenvisualisierung), darunter
                    "Welcher Einstieg passt zu dir?" (#einstieg), dann
@@ -123,15 +129,16 @@ leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verl
 leistung-account-audit.html
                    Detailseite Account-Audit (kostenlos)
 leistung-audit.html
-                   Detailseite Tiefenaudit (499 €) – Dateiname bewusst unverändert
+                   Detailseite Tiefenaudit (699 €) – Dateiname bewusst unverändert
                    auf "audit" belassen (nur der angezeigte Produktname wurde zu
                    "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
-                   Detailseite Betreuung (ab 249 €/Monat)
+                   Detailseite Betreuung (ab 499 €/Monat)
 leistung-starter-begleitung.html
-                   Detailseite Starter-Begleitung (799 €)
-ueber-mich.html    "Über mich" (Nav-Punkt): Werdegang, Kompetenzen; Default-Text, mit
-                   `TODO Jonas`-Kommentaren für noch fehlende Inhalte (Foto, Jahreszahlen)
+                   Detailseite Starter-Begleitung (899 €)
+ueber-mich.html    "Über mich" (Nav-Punkt): Intro mit Foto, Mein Weg, Werte (`#werte`), Kompetenzen,
+                   Haltung, Werdegang & auf einen Blick (`#werdegang`); `TODO Jonas`-Kommentare
+                   für noch fehlende Inhalte (Jahreszahlen, Zertifizierungen)
 tokens.css         Design-Tokens (Farben hell/dunkel, Schriften, Größen, Abstände, Radien,
                    Schatten) – Quelle ist das Designsystem "Performatic Intelligence"
 styles.css         Komponenten und Layout, nutzt nur Tokens aus tokens.css
@@ -152,8 +159,8 @@ _includes/          Gemeinsame Blöcke (header, footer, module-karten, preise,
 _config.yml        Jekyll-Konfiguration (schließt .md-Dateien vom Build aus)
 favicon.svg        Favicon
 robots.txt         Verweist auf sitemap.xml unter der Live-Domain
-sitemap.xml        Listet alle acht öffentlichen Seiten (index, leistungen, die vier
-                   leistung-*.html-Detailseiten, impressum, datenschutz) mit
+sitemap.xml        Listet alle neun öffentlichen Seiten (index, leistungen, die vier
+                   leistung-*.html-Detailseiten, ueber-mich, impressum, datenschutz) mit
                    `lastmod` aus der Git-Historie. `audit-score-dashboard.html` ist
                    bewusst NICHT gelistet (siehe oben: nicht in der Hauptnavigation
                    verlinktes internes Tool, soll nicht indexiert werden)
@@ -185,14 +192,24 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
 (C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
 
+**Texte/UX-Überarbeitung (2026-11-14, nach Kundenfeedback):** Ansprache durchgehend in der Ich-Form
+(Ausnahme Rechtstexte). Startseite spricht jetzt auch Einsteiger an, die noch nicht wissen, was Paid Ads
+leisten: Hook-Fragen, drei Ziele (Bekanntheit & Reichweite, Leads, Umsatz – "Mitarbeiter finden" bewusst
+nicht, da kein Recruiting-Angebot), Interessenkonflikt Plattform-KI vs. Kundenziele. Das frühere
+Messgrundlage-Band ist darin als dritte Zeile aufgegangen. Über mich: Foto `images/jonas.webp`
+(freigestellt, rechts neben dem Intro in Texthöhe), drei Werte (`#werte`), "Auf einen Blick" mit dem Werdegang
+zusammengelegt (`#werdegang`, Zeitleiste + Fakten). Hook-Fragen mit Piktogrammen (`.hook-list--icons`; Alternativen
+`--nums`/`--check` stehen in `styles.css`). Kontaktformular: Budget-Option "Noch offen".
+
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
 Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
-der Startseite (Variante A: Text + Karte "Für wen ist das?"). Hero-Text, Meta-Beschreibung und
-Fußzeile nennen noch "kleine und mittlere Unternehmen" und sind noch nicht angeglichen.
+der Startseite (Text + Karte "Für wen ist das?"). Seit 2026-11-14 sind Hero-Text, Meta-Beschreibung,
+JSON-LD und Fußzeile angeglichen (Selbstständige, Einzelunternehmen, kleine Betriebe).
 
-**Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die sechs Modul-Karten (`_includes/module-karten.html`)
-haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG, `currentColor`). Das Messgrundlage-Band ist
+**Module, Messgrundlage, Leistungen-Seite (2026-10-24):** Die Modul-Karten (`_includes/module-karten.html`,
+seit 2026-11-14 sieben inkl. Nutzen-Zeile `.card-claim`) haben Linien-Piktogramme (`.card-top` + `.ico`, Inline-SVG,
+`currentColor`). Das blaue Band (früher Messgrundlage, seit 2026-11-14 Plattform-Unabhängigkeit) ist
 `.band-dark.band-blue` (`accent-800`), damit es sich in Hell und Dunkel von Fläche und Preisen abhebt;
 Beschriftungen und Texte darin einheitlich (`accent-300` / `neutral-100`, Barlow 15px). Auf
 `leistungen.html` liegen die Modul-Karten (`section-alt`) und die Detailblöcke (`#details`) in getrennten
@@ -207,7 +224,7 @@ im SVG per `prefers-color-scheme`, Blautöne statt Grün/Lila/Gelb); das alte PN
 **Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
-Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
+Desktop-Raster: 7 Module als 3×2 + letzte Karte über volle Breite (`.card-grid-7`) (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
 Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): Einleitungstext steht
 über dem Formular (`.kontakt-stack`), Formular in voller Breite, mobil 1 Spalte, ab Tablet
 2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
@@ -267,7 +284,7 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
   Google Signals) sind eingebunden, Einwilligung läuft über Klaro mit drei getrennten
   Kategorien ("Notwendig", "Statistik", "Werbung" – siehe Abschnitt 3). Analyse und Werbung
   sind bewusst getrennte Opt-ins statt einer gemeinsamen Checkbox. Das `default denied`-
-  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen acht HTML-Seiten),
+  Signal steht im Code (synchrones Inline-Script vor Klaro/GTM in allen neun HTML-Seiten),
   `gtag('consent','update',...)` durch Klaro wurde per GTM-Debugger als funktionierend
   bestätigt. Offen bleibt nur noch, in der Kiprotect-Klaro-Config die Kategorie "Werbung"
   anzulegen und in GTM selbst die Consent Settings pro Tag zu aktivieren (beides außerhalb
@@ -298,13 +315,13 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       `performatic-intelligence.de` liegt zwar schon im Repo, aber ob die DNS-Records beim
       Registrar und die Pages-Settings selbst korrekt gesetzt sind, ist von hier aus nicht
       einsehbar (siehe Abschnitt 3)
-- [x] `sitemap.xml` aktualisiert (2026-09-07): enthält jetzt alle acht öffentlichen Seiten
-      inkl. der vier `leistung-*.html`-Detailseiten; `audit-score-dashboard.html` bewusst
+- [x] `sitemap.xml` aktualisiert (zuletzt 2026-11-14): enthält alle neun öffentlichen Seiten
+      inkl. der vier `leistung-*.html`-Detailseiten und `ueber-mich.html`; `audit-score-dashboard.html` bewusst
       weiterhin ausgeschlossen
 - [ ] Entscheiden, ob/wann Gewerbe angemeldet wird → danach Preis-Karten "scharf schalten"
       (siehe Abschnitt 2)
 - [ ] `Konzept-Performatic.md` (separates Dokument, außerhalb dieses Ordners) ist noch auf
       dem alten Markennamen "Performatic" und alten Preisen (690 €/490–1290 €) – bei Bedarf
-      auf "Performatic Intelligence" und aktuelle Preise (499 €/249 €/799 €) aktualisieren
+      auf "Performatic Intelligence" und aktuelle Preise (699 €/ab 499 €/899 €) aktualisieren
 - [ ] Optional: echte Case-Study-Zahlen für einen "Ergebnisse"-Abschnitt sammeln, sobald
       erste Kunden/Ergebnisse vorliegen (siehe Abschnitt 6)
