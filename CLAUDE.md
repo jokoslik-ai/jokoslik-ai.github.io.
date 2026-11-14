@@ -21,17 +21,18 @@ Zielgruppe: kleine und mittlere Unternehmen (v. a. E-Commerce), die Performance 
 2. **Tiefenaudit** – 499 € einmalig (bis 2026-09-07 nur "Audit" genannt; umbenannt zur
    klaren Abgrenzung vom kostenlosen Account-Audit). Tiefenanalyse inkl. Creatives,
    Landingpages, Wettbewerb, endet mit priorisiertem Maßnahmenplan + Ergebnis-Call.
-3. **Betreuung** – ab 249 € / Monat, Preis nach Aufwand (je nach betreuten Kanälen/Modulen).
+3. **Betreuung** – ab 499 € / Monat (bis 2026-11-14: ab 249 €), Preis nach Aufwand (je nach betreuten Kanälen/Modulen).
    Laufende Optimierung, monatlicher Review, monatlich kündbar.
 4. **Starter-Begleitung** – 799 € einmalig. Hand-Holding-Angebot für Unternehmen ohne
    jede Erfahrung mit Online-Marketing: gemeinsamer Aufbau der ersten Kampagnen + Tracking von
    Grund auf, Schritt für Schritt erklärt.
 
 **Begriffe:** Die vier Stufen oben = "Zusammenarbeit & Preise" (das *Wie*). Die inhaltlichen
-Leistungen = **sechs Module** (das *Was*): 01 Search Ads (Google & Microsoft Ads), 02 Meta Ads,
+Leistungen = **sieben Module** (das *Was*): 01 Search Ads (Google & Microsoft Ads), 02 Meta Ads,
 03 Google Analytics 4 Audit, 04 Google Tag Manager Audit, 05 Datenanbindung (Marketing-Tool-Daten
 mit GA4 verbinden, Shop/CRM, Offline-Conversions, Server-Side-Tagging), 06 Datenvisualisierung
-(Looker-Studio-Dashboard, KPI-Definitionen). Die vier Teile des Account-Audits heißen
+(Looker-Studio-Dashboard, KPI-Definitionen), 07 Creative- & Content-Strategie (Analyse vorhandener
+Inhalte + Content-Plan, ausdrücklich **keine Produktion**; Anker `#content-strategie`). Die vier Teile des Account-Audits heißen
 **Prüfbereiche** (nicht "Module"), um Verwechslung zu vermeiden – Ausnahme: das interne
 `audit-score-dashboard.html` nutzt noch "Modul".
 
@@ -44,7 +45,7 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 
 - **Kein Gewerbe angemeldet.** Es wird bewusst nur das kostenlose Account-Audit angeboten,
   um Marktinteresse zu testen, bevor eine Anmeldung erfolgt.
-- Tiefenaudit (499 €), Betreuung (ab 249 €/Monat) und Starter-Begleitung (799 €) werden auf der
+- Tiefenaudit (499 €), Betreuung (ab 499 €/Monat) und Starter-Begleitung (799 €) werden auf der
   Website bereits gezeigt, aber überall mit **"Bald verfügbar" / "In Kürze verfügbar"**-
   Badges (`.soon`, `.soon-inline`) markiert und ohne buchbare CTA-Buttons (kein
   "Jetzt kaufen", nur informativ).
@@ -111,9 +112,10 @@ Kontaktformular (Felder "Aktive Kanäle" und "Ausgangslage" zur Vorqualifizierun
 ## 4. Dateistruktur (Repo-Root, kein Unterordner)
 
 ```
-index.html        Startseite (Hero einspaltig, Vorstellung/"Für wen" (`#ueber`), 6 Modul-Karten, Messgrundlage-Argument,
+index.html        Startseite (Hero, Hook-Fragen + "Für wen" (`#ueber`), Ziele (`#ziele`), Plattform-Unabhängigkeit
+                   inkl. Messgrundlage (`.conflict-table`), 7 Modul-Karten, "So arbeite ich" (`#vorgehen`),
                    Zusammenarbeit & Preise, Kontaktformular, FAQ)
-leistungen.html    Übersicht: dieselben 6 Modul-Karten wie die Startseite (verlinken
+leistungen.html    Übersicht: dieselben 7 Modul-Karten wie die Startseite (verlinken
                    auf die Detailblöcke #search-ads, #meta-ads, #ga4-audit,
                    #gtm-audit, #datenanbindung, #datenvisualisierung), darunter
                    "Welcher Einstieg passt zu dir?" (#einstieg), dann
@@ -127,7 +129,7 @@ leistung-audit.html
                    auf "audit" belassen (nur der angezeigte Produktname wurde zu
                    "Tiefenaudit" umbenannt, um URL/Sitemap-Verweise nicht zu brechen)
 leistung-betreuung.html
-                   Detailseite Betreuung (ab 249 €/Monat)
+                   Detailseite Betreuung (ab 499 €/Monat)
 leistung-starter-begleitung.html
                    Detailseite Starter-Begleitung (799 €)
 ueber-mich.html    "Über mich" (Nav-Punkt): Werdegang, Kompetenzen; Default-Text, mit
@@ -185,6 +187,13 @@ immer dunkel). Primär-Button `accent-700` (Label `color-bg`), zwei Textstufen
 Barlow-Schriften auf Latin gekürzt (je ca. 33 KB), Logos/OG-Bild/Favicon im neuen Blau
 (C2PA-Metadaten aus den SVGs entfernt, da die Dateien geändert wurden).
 
+**Texte/UX-Überarbeitung (2026-11-14, nach Kundenfeedback):** Ansprache durchgehend in der Ich-Form
+(Ausnahme Rechtstexte). Startseite spricht jetzt auch Einsteiger an, die noch nicht wissen, was Paid Ads
+leisten: Hook-Fragen, drei Ziele (Bekanntheit & Reichweite, Leads, Umsatz – "Mitarbeiter finden" bewusst
+nicht, da kein Recruiting-Angebot), Interessenkonflikt Plattform-KI vs. Kundenziele. Das frühere
+Messgrundlage-Band ist darin als dritte Zeile aufgegangen. Über mich: Foto `images/jonas.webp`
+(freigestellt), drei Werte (`#werte`). Kontaktformular: Budget-Option "Noch offen".
+
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
 Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
@@ -207,7 +216,7 @@ im SVG per `prefers-color-scheme`, Blautöne statt Grün/Lila/Gelb); das alte PN
 **Grundregel: immer Mobile First optimieren.** Layouts zuerst für Smartphone-Breite
 entwerfen und prüfen, dann per `min-width`-Media-Queries für Tablet (ab 721px) und Desktop
 (ab 901px) erweitern. Neue CSS-Regeln mobile-first schreiben (Basis = 1 Spalte).
-Desktop-Raster: 6 Module als 3×2 (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
+Desktop-Raster: 7 Module als 3×2 + letzte Karte über volle Breite (`.card-grid-7`) (`.card-grid-3`: 1 → 2 → 3 Spalten), 4 Preisstufen in einer
 Reihe (`.card-grid-4`: 1 → 2 → 4 Spalten). Kontaktformular (`.lead-form-grid`): Einleitungstext steht
 über dem Formular (`.kontakt-stack`), Formular in voller Breite, mobil 1 Spalte, ab Tablet
 2 Spalten; Selects mit `appearance: none` (entfernt die native 3D-/Verlaufsoptik
@@ -305,6 +314,6 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
       (siehe Abschnitt 2)
 - [ ] `Konzept-Performatic.md` (separates Dokument, außerhalb dieses Ordners) ist noch auf
       dem alten Markennamen "Performatic" und alten Preisen (690 €/490–1290 €) – bei Bedarf
-      auf "Performatic Intelligence" und aktuelle Preise (499 €/249 €/799 €) aktualisieren
+      auf "Performatic Intelligence" und aktuelle Preise (499 €/ab 499 €/799 €) aktualisieren
 - [ ] Optional: echte Case-Study-Zahlen für einen "Ergebnisse"-Abschnitt sammeln, sobald
       erste Kunden/Ergebnisse vorliegen (siehe Abschnitt 6)
