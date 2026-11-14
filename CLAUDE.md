@@ -201,6 +201,22 @@ Messgrundlage-Band ist darin als dritte Zeile aufgegangen. Über mich: Foto `ima
 zusammengelegt (`#werdegang`, Zeitleiste + Fakten). Hook-Fragen mit Piktogrammen (`.hook-list--icons`; Alternativen
 `--nums`/`--check` stehen in `styles.css`). Kontaktformular: Budget-Option "Noch offen".
 
+**Conversion-Überarbeitung (2026-11-14, zweite Runde):** Hinweisbalken positiv formuliert ("Zum Start biete ich das
+Account-Audit kostenlos an"). Einstieg der Startseite mit zwei Wegen (`.hero-paths`: "Werbekonto kostenlos prüfen
+lassen" / "Kostenlose Ersteinschätzung anfragen", neue Interesse-Option `ersteinschaetzung`) und Foto + Erfahrung
+(`.hero-person`, Link auf Über mich). Startseite zeigt vier Nutzen-Karten statt der sieben Module (direkt in
+`index.html`; `module-karten.html` wird nur noch von `leistungen.html` genutzt), das Plattform-Band hat je einen Satz
+pro Zelle, neuer Abschnitt `#ergebnis` mit der Beispiel-Score-Grafik vor den Preisen. Kopfzeile hat ab 721px einen
+Button "Kostenloses Account-Audit" (`.nav-cta`). Formular: sichtbar nur Name, E-Mail, Website, "Was hast du vor?";
+Budget (neue Stufen ab "unter 500 €"), Kanäle, Ausgangslage und Interesse liegen in `<details id="formMore">`.
+Preis-Karten: nur das Account-Audit ist hervorgehoben (`.bp-card-featured`), die drei anderen haben "Details" als
+Sekundär-Button plus "Benachrichtige mich" (belegt "Interesse an" vor, weiterhin nicht buchbar). `leistungen.html`:
+Detailblöcke sind `<details class="leistung-block">`, ein Ankerlink öffnet den passenden Block.
+`script.js`: Links mit `.js-kontakt` springen auf Seiten mit Formular zu `#kontakt`; `data-interesse` wird bei
+Seitenwechsel als `?interesse=…` mitgegeben und beim Laden ausgelesen; nach erfolgreichem Absenden
+`dataLayer.push({event: 'generate_lead', interesse})` (Trigger/GA4-Ereignis dafür in GTM noch anzulegen).
+Zeitangabe überall "ca. 15 Minuten". `html { scroll-padding-top }` hält Sprungziele unter der fixierten Kopfzeile frei.
+
 **Positionierung (2026-10-24):** Das Angebot richtet sich an Selbstständige, Einzelunternehmen und
 KMU ohne eigene Performance-Marketing-Abteilung/-Expertise; Einstieg mit niedriger Hürde (Start:
 Starter-Begleitung, Optimierung: kostenloses Account-Audit). Umgesetzt im Abschnitt `#ueber` auf
@@ -256,9 +272,8 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - Responsive Breakpoints bei 900px und 720px (Mobile-Nav wird zum Hamburger-Menü).
 - **Navigation:** Hauptmenü hat einen "Leistungen"-Dropdown (`.nav-dropdown`) mit Links auf
   die vier `leistung-*.html`-Detailseiten (jeweils mit Preis-Tag) plus "Alle Leistungen
-  ansehen"; daneben ein direkter CTA-Link "Kostenloses Account-Audit" und "FAQ". Der frühere
-  Nav-Punkt "Preise" wurde durch "Kostenloses Account-Audit" ersetzt, ein separater
-  CTA-Button wurde entfernt. `.site-header`-Hintergrund ist bewusst `--color-neutral-200`
+  ansehen"; daneben "Über mich", "FAQ" und ab 721px der Button "Kostenloses Account-Audit"
+  (`.nav-cta`; mobil übernimmt das die `.cta-bar`). `.site-header`-Hintergrund ist bewusst `--color-neutral-200`
   statt `--color-neutral-100` (plus `box-shadow: var(--shadow-sm)`), damit sich die
   sticky Kopfzeile sichtbarer vom fast gleichfarbigen `--color-bg` abhebt.
 
@@ -305,6 +320,7 @@ Herkunft: aus einem Claude-Design-Canvas-Entwurf übernommen und auf die neue Ma
 - [ ] Echte Kontaktdaten in `impressum.html` eintragen (Adresse – siehe Abschnitt 6,
       ggf. c/o-Adresse –, Telefon). In `datenschutz.html` sind Name (Jonas Koslik) und
       E-Mail (`kontakt@performatic-intelligence.de`) bereits eingetragen, Adresse fehlt noch.
+- [ ] In GTM Trigger + GA4-Ereignis für das dataLayer-Event `generate_lead` anlegen (Formular-Anfrage)
 - [ ] Klaro-Kategorie "Werbung" in der Kiprotect-Config anlegen (aktuell nur "Notwendig"/
       "Statistik" vorhanden)
 - [ ] In GTM je Tag (GA4 etc.) die "Consent Settings" (Built-in Consent Checks) auf
