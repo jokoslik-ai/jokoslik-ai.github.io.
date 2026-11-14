@@ -87,7 +87,7 @@
       "name": "Wie viel Zeit muss ich selbst investieren?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Für das Account-Audit reicht ein kurzer Zugang oder Screenshot – 10–15 Minuten deiner Zeit."
+        "text": "Für das Account-Audit reicht ein kurzer Zugang oder Screenshot, ca. 15 Minuten deiner Zeit."
       }
     },
     {
@@ -143,15 +143,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Online-Werbung für Selbstständige &amp; kleine Unternehmen</div>
-      <h1>Mehr Kunden aus deinem Werbebudget. <span class="hl">Messbar.</span></h1>
-      <p class="hero-sub">Ich helfe dir, mit Google- und Meta-Anzeigen bekannter zu werden, mehr Anfragen zu bekommen oder deinen Umsatz zu steigern. Mit einer Strategie, die sich an deinen Zielen orientiert und nicht an denen der Werbeplattformen.</p>
-      <div class="hero-actions">
-        <a href="#kontakt" class="btn btn-primary">Kostenloses Account-Audit</a>
-        <a href="#ziele" class="btn btn-secondary">Was Werbung für dich leisten kann</a>
+    <div class="container hero-grid">
+      <div class="hero-main">
+        <div class="eyebrow">Online-Werbung für Selbstständige &amp; kleine Unternehmen</div>
+        <h1>Mehr Kunden aus deinem Werbebudget. <span class="hl">Messbar.</span></h1>
+        <p class="hero-sub">Ich helfe dir, mit Google- und Meta-Anzeigen bekannter zu werden, mehr Anfragen zu bekommen oder deinen Umsatz zu steigern. Mit einer Strategie, die sich an deinen Zielen orientiert und nicht an denen der Werbeplattformen.</p>
+        <div class="hero-actions hero-paths">
+          <div class="hero-path">
+            <span class="hero-path-lbl">Du wirbst schon?</span>
+            <a href="#kontakt" class="btn btn-primary" data-interesse="account-audit">Werbekonto kostenlos prüfen lassen</a>
+          </div>
+          <div class="hero-path">
+            <span class="hero-path-lbl">Du fängst gerade an?</span>
+            <a href="#kontakt" class="btn btn-secondary" data-interesse="ersteinschaetzung">Kostenlose Ersteinschätzung anfragen</a>
+          </div>
+        </div>
+        <div class="hero-fineprint">Account-Audit: Ergebnis in 5 Werktagen · ca. 15 Minuten Aufwand für dich · keine Verpflichtung</div>
       </div>
-      <div class="hero-fineprint">Ergebnis in 5 Werktagen · ca. 15 Minuten Aufwand für dich · keine Verpflichtung</div>
+      <a href="ueber-mich.html" class="hero-person">
+        <img src="images/jonas.webp" alt="Porträt von Jonas Koslik" width="572" height="787">
+        <span><strong>Jonas Koslik</strong>Seit über sechs Jahren Performance Marketing im E-Commerce<em>Mehr über mich &rarr;</em></span>
+      </a>
     </div>
   </section>
 
@@ -224,31 +236,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="conflict-row">
           <div class="conflict-cell old">
             <div class="lbl">Automatik der Plattform</div>
-            <p>All-in-one-Kampagnen (z.&nbsp;B. Performance Max oder Advantage+) entscheiden weitgehend selbst, wo und bei wem dein Budget landet. Was genau passiert, siehst du kaum.</p>
+            <p>Die Automatik entscheidet weitgehend selbst, wohin dein Budget geht.</p>
           </div>
           <div class="conflict-cell new">
             <div class="lbl">Mit Performatic Intelligence</div>
-            <p>Automatik dort, wo sie dir nützt, mit klaren Grenzen, Ausschlüssen und regelmäßiger Kontrolle. Du weißt, wofür dein Geld ausgegeben wird.</p>
+            <p>Automatik mit klaren Grenzen und regelmäßiger Kontrolle.</p>
           </div>
         </div>
         <div class="conflict-row">
           <div class="conflict-cell old">
             <div class="lbl">Empfehlungen im Werbekonto</div>
-            <p>Optimierungsvorschläge zielen oft auf höhere Budgets oder eine breitere Ausrichtung, unabhängig von deiner Marge oder deinen Kapazitäten.</p>
+            <p>Vorschläge zielen oft auf höhere Budgets, unabhängig von deiner Marge.</p>
           </div>
           <div class="conflict-cell new">
             <div class="lbl">Mit Performatic Intelligence</div>
-            <p>Jede Empfehlung wird an deinen Zielen gemessen: Was darf ein Kunde kosten, welche Region, welche Auslastung?</p>
+            <p>Jede Empfehlung wird an deinen Zielen gemessen.</p>
           </div>
         </div>
         <div class="conflict-row">
           <div class="conflict-cell old">
             <div class="lbl">Reporting der Plattform</div>
-            <p>Jede Plattform bewertet sich selbst. Dieselbe Anfrage oder derselbe Verkauf wird oft von mehreren Kanälen beansprucht und mehrfach gezählt.</p>
+            <p>Jede Plattform bewertet sich selbst und zählt dieselbe Anfrage oft mehrfach.</p>
           </div>
           <div class="conflict-cell new">
             <div class="lbl">Mit Performatic Intelligence</div>
-            <p>Google Analytics als neutrale Messstelle: Jede Anfrage und jeder Verkauf wird nur einmal gezählt. So siehst du, was wirklich funktioniert.</p>
+            <p>Google Analytics als neutrale Messstelle: Jede Anfrage zählt nur einmal.</p>
           </div>
         </div>
       </div>
@@ -260,10 +272,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="section-head">
         <h2>Leistungen</h2>
-        <span>Sieben Module, einzeln oder kombiniert, je nach deinem Bedarf.</span>
+        <span>Vier Bereiche, einzeln oder kombiniert, je nach deinem Bedarf.</span>
       </div>
-      {% include module-karten.html prefix="leistungen.html" %}
-      <p class="section-more"><a href="leistungen.html">Mehr zu allen Leistungen &rarr;</a></p>
+      <div class="card-grid card-grid-4">
+        <div class="blueprint bp-card">
+          <div class="card-top"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></svg></div>
+          <h3>Anzeigen, die gefunden werden</h3>
+          <p class="desc">Bei Google und Bing, wenn jemand nach deinem Angebot sucht, und auf Facebook und Instagram bei Menschen, die zu dir passen.</p>
+          <a href="leistungen.html#search-ads" class="card-link">Search Ads &amp; Meta Ads &rarr;</a>
+        </div>
+        <div class="blueprint bp-card">
+          <div class="card-top"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="12" width="4" height="8"/><rect x="10" y="5" width="4" height="15"/><rect x="16" y="9" width="4" height="11"/></svg></div>
+          <h3>Messung, der du trauen kannst</h3>
+          <p class="desc">Ich prüfe, ob Anfragen und Verkäufe vollständig und nur einmal gezählt werden und ob die Einwilligung deiner Besucher berücksichtigt wird.</p>
+          <a href="leistungen.html#ga4-audit" class="card-link">Analytics- &amp; Tag-Manager-Audit &rarr;</a>
+        </div>
+        <div class="blueprint bp-card">
+          <div class="card-top"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5V12h8.5"/></svg></div>
+          <h3>Alle Zahlen an einem Ort</h3>
+          <p class="desc">Werbekonten, Website und Shop laufen in einem Dashboard zusammen, das sich täglich selbst aktualisiert.</p>
+          <a href="leistungen.html#datenanbindung" class="card-link">Datenanbindung &amp; Dashboard &rarr;</a>
+        </div>
+        <div class="blueprint bp-card">
+          <div class="card-top"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="9" cy="10" r="2"/><path d="M3 17l5-4 4 3 3-2 6 4"/></svg></div>
+          <h3>Inhalte, die als Anzeige funktionieren</h3>
+          <p class="desc">Ich analysiere deine vorhandenen Bilder, Videos und Texte und entwickle mit dir einen Content-Plan. Analyse und Strategie, keine Produktion.</p>
+          <a href="leistungen.html#content-strategie" class="card-link">Content-Strategie &rarr;</a>
+        </div>
+      </div>
+      <p class="section-more"><a href="leistungen.html">Alle sieben Module im Detail &rarr;</a></p>
     </div>
   </section>
 
@@ -304,6 +341,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- BEISPIEL-ERGEBNIS ACCOUNT-AUDIT -->
+  <section id="ergebnis" class="section section-alt">
+    <div class="container product-grid">
+      <div>
+        <h2>Das bekommst du beim kostenlosen Account-Audit</h2>
+        <ul class="leistung-detail-list">
+          <li><strong>Einen Score von 0 bis 100</strong>, gesamt und für jeden der vier Prüfbereiche</li>
+          <li><strong>Ein PDF mit priorisierten Handlungsempfehlungen</strong>, die größten Hebel zuerst</li>
+          <li><strong>Eine ehrliche Einschätzung</strong>, unabhängig davon, ob wir danach zusammenarbeiten</li>
+        </ul>
+        <p class="section-more-left"><a href="leistung-account-audit.html">So läuft das Account-Audit ab &rarr;</a></p>
+      </div>
+      <figure class="product-preview blueprint">
+        <img src="images/beispielscore.svg" alt="Beispielhaftes Audit-Ergebnis: Score 57 von 100, aufgeteilt nach den vier Prüfbereichen" width="320" height="486" loading="lazy">
+        <figcaption>Beispiel-Ergebnis eines Account-Audits</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- PREISE / ZUSAMMENARBEIT -->
 {% include preise.html %}
 
@@ -339,7 +395,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </details>
         <details class="faq-item">
           <summary>Wie viel Zeit muss ich selbst investieren?</summary>
-          <p>Für das Account-Audit reicht ein kurzer Zugang oder Screenshot – 10–15 Minuten deiner Zeit.</p>
+          <p>Für das Account-Audit reicht ein kurzer Zugang oder Screenshot, ca. 15 Minuten deiner Zeit.</p>
         </details>
         <details class="faq-item">
           <summary>Gibt es eine Mindestlaufzeit bei der Betreuung?</summary>

@@ -294,9 +294,17 @@ select.input {
 .page-intro h1 { font-size: clamp(1.9rem, 4vw, var(--fs-3xl)); margin-bottom: var(--space-4); }
 .page-intro p { font-size: var(--fs-lg); max-width: 62ch; color: var(--color-text-secondary); }
 
-.leistung-block {
-  display: grid; grid-template-columns: 90px 1fr; gap: var(--space-6);
-  border-top: 1px solid var(--color-divider); padding: var(--space-8) 0;
+.leistung-block { border-top: 1px solid var(--color-divider); padding: var(--space-6) 0; }
+.leistung-block summary { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: var(--space-4); align-items: center; cursor: pointer; list-style: none; }
+.leistung-block summary::-webkit-details-marker { display: none; }
+.leistung-block summary::after { content: "+"; font-family: var(--font-heading); font-size: var(--fs-2xl); color: var(--color-accent-700); line-height: 1; }
+.leistung-block[open] summary::after { content: "–"; }
+.leistung-block summary h2 { margin: 0; }
+.leistung-block summary:hover h2 { color: var(--color-accent-700); }
+.leistung-body { padding-top: var(--space-4); }
+@media (min-width: 721px) {
+  .leistung-block summary { grid-template-columns: 90px minmax(0, 1fr) auto; gap: var(--space-6); }
+  .leistung-body { padding-left: calc(90px + var(--space-6)); }
 }
 .leistung-block:first-of-type { border-top: none; }
 .leistung-block .num-lg {
@@ -329,7 +337,6 @@ select.input {
 .product-cta-row { display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center; }
 
 @media (max-width: 720px) {
-  .leistung-block { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; }
 }
 
@@ -548,3 +555,36 @@ select.input {
   .goal-grid { grid-auto-rows: auto; }
   .goal-card { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: var(--space-3); }
 }
+
+/* — Überarbeitung 2026-11-14 (2): Einstieg mit Person und zwei Wegen, Kopfzeilen-Button, Formular, Preise — */
+.hero-paths { gap: var(--space-4); }
+.hero-path { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+.hero-path-lbl { font-size: var(--fs-sm); color: var(--color-text-secondary); }
+.hero-person { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-8); text-decoration: none; color: var(--color-text-secondary); font-size: var(--fs-sm); }
+.hero-person img { flex: none; width: 72px; height: 72px; object-fit: cover; object-position: center 12%; border-radius: 50%; background: var(--color-accent-100); border: 1px solid var(--color-divider); }
+.hero-person span { display: flex; flex-direction: column; min-width: 0; }
+.hero-person strong { color: var(--color-text); font-family: var(--font-heading); font-size: var(--fs-lg); }
+.hero-person em { font-style: normal; font-weight: 600; color: var(--color-accent-700); margin-top: var(--space-1); }
+.hero-person:hover em { text-decoration: underline; }
+@media (min-width: 481px) { .hero-path { width: auto; } }
+@media (min-width: 901px) {
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; column-gap: var(--space-12); align-items: center; }
+  .hero-person { flex-direction: column; align-items: flex-start; margin-top: 0; }
+  .hero-person img { width: 260px; height: 300px; border-radius: var(--radius-md); }
+}
+
+.nav-cta { white-space: nowrap; }
+@media (max-width: 720px) { .nav-cta { display: none; } }
+
+.form-more { border-top: 1px solid var(--color-accent-600, var(--color-accent-700)); padding-top: var(--space-3); }
+.form-more summary { cursor: pointer; font-size: var(--fs-sm); color: var(--color-accent-100); list-style: none; }
+.form-more summary::-webkit-details-marker { display: none; }
+.form-more summary::before { content: "+ "; }
+.form-more[open] summary::before { content: "– "; }
+.form-more .lead-form-grid { margin-top: var(--space-4); }
+
+.bp-card-featured { border-color: var(--color-accent-700); box-shadow: inset 0 0 0 1px var(--color-accent-700); }
+.section-more-left { margin-top: var(--space-6); font-size: var(--fs-sm); }
+.section-more-left a { font-weight: 600; }
+/* Sprungziele nicht unter der fixierten Kopfzeile verstecken */
+html { scroll-padding-top: 88px; }
